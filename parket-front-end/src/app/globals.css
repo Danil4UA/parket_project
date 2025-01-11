@@ -35,7 +35,7 @@ body {
 .page-wrapper {
   flex-grow: 1;
   padding: 20px;
-  max-width: 1400px;
+  max-width: 1840px;
 }
 * {
   box-sizing: border-box;

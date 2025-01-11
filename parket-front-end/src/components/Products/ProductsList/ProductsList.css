@@ -1,7 +1,9 @@
 .products__list {
+    flex-grow: 1; /* Контент занимает оставшуюся ширину */
+    padding: 20px;
     display: flex;
     justify-content: space-evenly;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
 
 }
