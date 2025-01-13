@@ -1,7 +1,13 @@
 .ProductsFilter {
-    width: 300px; /* Фиксированная ширина фильтра */
+    width: 20%; /* Фиксированная ширина фильтра */
     flex-shrink: 0; /* Не дает фильтру сжиматься */
     background-color: #fcfcfc; /* Добавляем фон для наглядности */
     padding: 10px; /* Внутренний отступ */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Тень для отделения */
+}
+
+@media screen and (max-width: 750px) {
+    .ProductsFilter {
+        display: none;
+    }
 }

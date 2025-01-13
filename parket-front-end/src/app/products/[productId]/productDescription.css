@@ -1,0 +1,11 @@
+.product-wrapper {
+    display: flex;
+}
+
+.product__left {
+    width: 40%;
+}
+
+.product__info_wrapper {
+    width: 60%;
+}

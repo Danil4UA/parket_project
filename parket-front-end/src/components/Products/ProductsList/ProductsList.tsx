@@ -1,9 +1,10 @@
+"use client"
 import ProductCard from "@/components/Products/ProductCard/ProductCard";
 import "./ProductsList.css"
 import { data } from "./data";
 
 export interface Product {
-    id: string;
+    productId: string;
     productName: string;
     productPrice: string;
     productDescription: string;
@@ -12,16 +13,20 @@ export interface Product {
 
 const ProductsList = () => {
     return (
+        <>
+    
         <div className="products__list">
             {data.map((item: Product) => (
                 <ProductCard 
-                    key={item.id} 
+                    key={item.productId} 
+                    productId={item.productId}
                     productName={item.productName} 
                     productPrice={item.productPrice} 
                     productDescription={item.productDescription} 
                 />
             ))}
         </div>
+        </>
     );
 };
 
