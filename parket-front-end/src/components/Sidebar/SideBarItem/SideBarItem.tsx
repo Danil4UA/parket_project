@@ -1,4 +1,4 @@
-import { Link } from "../../../i18n/routing.ts";
+import { Link } from "@/i18n/routing.ts";
 import { memo } from "react";
 import { SidebarItemType } from "../model/items";
 
