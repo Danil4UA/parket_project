@@ -1,46 +1,46 @@
 .Sidebar {
-    width: var(--sidebar-width);
-    background: white;
-    bottom: 0;
-    left: 0;
-    z-index: 2000;
-    transition: width 0.4s;
-    position: absolute;
-    height: calc(100vh - var(--navbar-height));
+  width: var(--sidebar-width);
+  background: white;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  transition: width 0.4s;
+  position: absolute;
+  height: calc(100vh - var(--navbar-height));
 }
 
 .collapsed {
-    width: var(--sidebar-width-collapsed);
+  width: var(--sidebar-width-collapsed);
 }
 
 .collapseBtn {
-    position: absolute;
-    right: -14px;
-    top: 14px;
+  position: absolute;
+  right: -14px;
+  top: 14px;
 }
 
 .items {
-    margin-top: 20px;
-    margin-left: 30px;
-    display: flex;
-    flex-direction: column;
+  margin-top: 20px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .overlay {
-    position: fixed;
-    top: var(--navbar-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--navbar-height));
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--navbar-height));
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .overlayActive {
-    opacity: 1;
-    visibility: visible;
-    cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  cursor: pointer;
 }

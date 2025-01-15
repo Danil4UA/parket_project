@@ -1,3 +1,4 @@
+"use client";
 import { memo } from "react";
 
 interface LangSwitcherProps {
@@ -6,7 +7,7 @@ interface LangSwitcherProps {
 
 export const LangSwitcher = ({}: LangSwitcherProps) => {
   return (
-    <select className="">
+    <select className="" onChange={onSelectChange}>
       <option value="en">{"English"}</option>
       <option value="ru">{"Русский"}</option>
       <option value="he">{"עברית"}</option>
