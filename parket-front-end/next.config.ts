@@ -1,27 +1,8 @@
-import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
-const nextConfig: NextConfig = {
-  reactStrictMode: true, // Включает строгий режим React
-  webpack: (config, { isServer }) => {
-    // Настройка для CSS-модулей
-    config.module.rules.push({
-      test: /\.module\.css$/,
-      use: [
-        {
-          loader: "css-loader",
-          options: {
-            modules: {
-              localIdentName: isServer
-                ? "[hash:base64:8]"
-                : "[path][name]__[local]", // Формат имен классов
-            },
-          },
-        },
-      ],
-    });
+const withNextIntl = createNextIntlPlugin();
 
-    return config;
-  },
-};
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
