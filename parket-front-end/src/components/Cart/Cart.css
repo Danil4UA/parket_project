@@ -7,26 +7,40 @@
     top: 0;
     right: 0;
     z-index: 2;
+    padding: 0 30px;
+    box-sizing: border-box;
+    visibility: visible;
 }
 
 .collapsedCart {
     width: 0;
+    visibility: hidden;
 }
 
-.overlay {
+.overlayCart {
     background: black;
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     height: 100vh;
     width: 100vw;
     opacity: 0;
-    pointer-events: none; /* Отключает взаимодействие, когда невидимо */
-    transition: opacity 0.3s ease; /* Плавный переход */
-    z-index: 1;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.overlayActive {
-    opacity: 0.5; /* Видимое состояние */
-    pointer-events: auto; /* Включает взаимодействие */
+
+.overlayCartActive {
+    opacity: 0.5; 
+    visibility: visible;
+    cursor: pointer;
+}
+
+
+.Cart_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--navbar-height);
+    border-bottom: 1px solid grey;
 }

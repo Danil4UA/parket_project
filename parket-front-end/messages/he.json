@@ -1,5 +1,8 @@
 {
-  "Index": {
-    "title": "Shalom"
+  "Cart": {
+    "cart": "עֲגָלָה"
+  },
+  "HomePage": {
+    "title": "דף הבית"
   }
 }

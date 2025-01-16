@@ -8,11 +8,11 @@ import menuIcon from "@/app/assets/hamburger-menu.svg";
 import LangSwitcher from "@/widgets/LangSwitcher/ui/LangSwitcher";
 
 export const Navbar = () => {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsedCart, setCollapsedCart] = useState(true)
   const [collapsedSidebar, setCollapsedSidebar] = useState(true);
 
   const onToggle = () => {
-    setCollapsed((prev) => !prev);
+    setCollapsedCart((prev) => !prev);
   };
 
   const onToggleMenu = () => {
@@ -25,8 +25,7 @@ export const Navbar = () => {
         <span onClick={onToggleMenu}>
           {
             // eslint-disable-next-line @next/next/no-img-element
-          }
-          <img width={"24px"} src={menuIcon.src} alt="Menu icon" />
+          }<img width={"24px"} src={menuIcon.src} alt="Menu icon" />
         </span>
         <LangSwitcher />
       </div>
@@ -37,7 +36,7 @@ export const Navbar = () => {
         <button>search</button>
       </div>
 
-      <Cart collapsed={collapsed} setCollapsed={setCollapsed} />
+      <Cart collapsed={collapsedCart} onClose={()=>setCollapsedCart(true)} />
       <Sidebar collapsed={collapsedSidebar} onClose={() => setCollapsedSidebar(true)}></Sidebar>
     </div>
   );
