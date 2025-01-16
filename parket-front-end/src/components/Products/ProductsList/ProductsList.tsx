@@ -5,10 +5,15 @@ import { data } from "./data";
 
 export interface Product {
     productId: string;
-    productName: string;
-    productPrice: string;
-    productDescription: string;
-}
+    name: string;
+    description: string;
+    price: string;
+    images: string[];
+    category: string;
+    stock: number;
+    discount: number;
+    isAvailable: boolean;
+  }
 
 
 const ProductsList = () => {
@@ -20,9 +25,9 @@ const ProductsList = () => {
                 <ProductCard 
                     key={item.productId} 
                     productId={item.productId}
-                    productName={item.productName} 
-                    productPrice={item.productPrice} 
-                    productDescription={item.productDescription} 
+                    productName={item.name} 
+                    productPrice={item.price} 
+                    productDescription={item.description} 
                 />
             ))}
         </div>

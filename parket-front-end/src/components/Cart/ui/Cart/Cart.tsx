@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useSelector } from "react-redux";
 import { RootState } from '@/redux/store'
+import CartItem from "../CartItem/CartItem";
 
 interface CartProps {
     collapsed: boolean;
@@ -13,8 +14,7 @@ interface CartProps {
 const Cart = ({ collapsed, onClose }: CartProps) => {
     const t = useTranslations("Cart")
     const cart = useSelector((state: RootState) => state.cart);
-    console.log(cart.cartItems)
-
+    console.log(cart)
     useEffect(() => {
         if (!collapsed) {
           document.documentElement.style.overflow = "hidden";
@@ -46,11 +46,15 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
         <>
             <div className={classNames("Cart", { collapsedCart: collapsed }, [])}>
                 <div className="Cart_header">
-                <p>{t("cart")}</p>
-                <button 
-                    onClick={()=>onClose()}
-                >
-                </button>
+                  <p>{t("cart")}</p>
+                  <button 
+                      onClick={()=>onClose()}
+                  >
+                    close
+                  </button>
+                </div>
+                <div className="Cart_main">
+                  <CartItem />
                 </div>
                 
             </div>

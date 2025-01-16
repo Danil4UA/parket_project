@@ -1,5 +1,5 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Link } from "@/i18n/routing.ts";
+import { Link } from "@/i18n/routing";
 import "./ProductCard.css";
 
 interface ProductCardProps {

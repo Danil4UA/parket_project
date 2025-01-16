@@ -1,5 +1,5 @@
 "use client";
-import Cart from "../Cart/Cart";
+import Cart from "../Cart/ui/Cart/Cart";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Navbar.css";
 import { useState } from "react";
