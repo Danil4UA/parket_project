@@ -1,27 +1,52 @@
+"use client"
 import { FC } from "react";
 import "./productDescription.css";
-
+import { data } from "@/components/Products/ProductsList/data";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/components/Cart/model/slice/cartSlice";
+import { Product } from "@/components/Products/ProductsList/ProductsList";
+import { use } from "react";
 interface ProductPageProps {
   params: {
     productId: string;
   };
 }
 
-const ProductPage: FC<ProductPageProps> = async ({ params }) => {
-  const { productId } = await params;
-  console.log(productId);
+const ProductPage: FC<ProductPageProps> = ({params}) => {
+  const { productId } = use(params);
+    const dispatch = useDispatch();
+
+  // Find the product by ID
+  const product: Product | undefined = data.find((item) => item.productId === productId);
+  // Handle the case where the product is not found
+  if (!product) {
+    return (
+      <section className="product-wrapper">
+        <div className="product__info_wrapper">
+          <p>Product not found. Please check the ID and try again.</p>
+        </div>
+      </section>
+    );
+  }
+
+  // Add to cart handler
+  const handleAddToCart = () => {
+    const newProduct = { ...product, quantity: 1 }; // Add a default quantity
+    dispatch(addToCart(newProduct));
+  };
+
   return (
     <section className="product-wrapper">
-      <div className="product__left"></div>
+      <div className="product__left">
+        {/* Display product image */}
+        <img src={product.images[0]} alt={product.name} className="product__image" />
+      </div>
       <div className="product__info_wrapper">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio cum autem quam alias expedita aliquid doloribus, illum esse harum
-          vero nulla, dolores soluta, voluptatem explicabo saepe mollitia accusantium beatae! Quos magni laudantium, quas nulla consectetur
-          dicta dolore ipsum! Nostrum, quos at. Culpa a aut earum totam asperiores molestias nobis atque impedit enim! Pariatur sit sed
-          doloribus cumque excepturi modi error totam. Magni consequuntur inventore commodi accusantium sint fugit! Voluptatibus doloremque
-          quam quisquam? Nemo fugit nam, impedit porro sed quaerat? Repellat exercitationem quod dolorum ad qui fugiat odit ullam dicta
-          incidunt nisi? Tempore sint rem eligendi? Vel qui ratione facilis labore!
-        </p>
+        {/* Display product details */}
+        <h1>{product.name}</h1>
+        <p>{product.description}</p>
+        <p>Price: ${product.price}</p>
+        <button onClick={handleAddToCart}>Add to Cart</button>
       </div>
     </section>
   );

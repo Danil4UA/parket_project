@@ -3,7 +3,7 @@ import "./Cart.css";
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useSelector } from "react-redux";
-import { RootState } from '@/redux/store'
+import { RootState } from "@/redux/store";
 import CartItem from "../CartItem/CartItem";
 
 interface CartProps {
@@ -41,7 +41,8 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
           window.removeEventListener("keydown", handleKeyDown);
         };
       }, [onClose]);
-      
+      const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+      console.log(cartItems)      
     return (
         <>
             <div className={classNames("Cart", { collapsedCart: collapsed }, [])}>
@@ -54,7 +55,9 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
                   </button>
                 </div>
                 <div className="Cart_main">
-                  <CartItem />
+                {cartItems.map((item)=>{
+                  return <CartItem key={item.productId} item={item} />
+                })}
                 </div>
                 
             </div>

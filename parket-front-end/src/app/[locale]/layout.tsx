@@ -6,6 +6,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ReduxProvider } from "@/redux/ReduxProvider";
+import CartLoader from "@/components/CartLoader/CartLoader";
 export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
@@ -19,6 +20,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       <body>
       <ReduxProvider>
         <NextIntlClientProvider messages={messages}>
+          <CartLoader />
           <Navbar />
           <div className="content-page">
             <div className="page-wrapper">
