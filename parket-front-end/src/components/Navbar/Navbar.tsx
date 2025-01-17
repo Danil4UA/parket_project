@@ -6,12 +6,16 @@ import { useState } from "react";
 import menuIcon from "@/app/assets/hamburger-menu.svg";
 
 import LangSwitcher from "@/widgets/LangSwitcher/ui/LangSwitcher";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { selectTotalItems } from "../Cart/model/slice/cartSlice";
 
 export const Navbar = () => {
   const [collapsedCart, setCollapsedCart] = useState(true)
   const [collapsedSidebar, setCollapsedSidebar] = useState(true);
+  const cartItems = useSelector((state: RootState) => selectTotalItems(state)); 
 
-  const onToggle = () => {
+  const onToggle = () => {  
     setCollapsedCart((prev) => !prev);
   };
 
@@ -32,7 +36,7 @@ export const Navbar = () => {
 
       <div>LOGO</div>
       <div>
-        <button onClick={() => onToggle()}>Cart</button>
+        <button onClick={() => onToggle()}>Cart {cartItems}</button>
         <button>search</button>
       </div>
 

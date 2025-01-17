@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import CartItem from "../CartItem/CartItem";
+import { selectTotalPrice } from "../../model/slice/cartSlice";
 
 interface CartProps {
     collapsed: boolean;
@@ -14,6 +15,8 @@ interface CartProps {
 const Cart = ({ collapsed, onClose }: CartProps) => {
     const t = useTranslations("Cart")
     const cart = useSelector((state: RootState) => state.cart);
+    const totalPrice = useSelector((state: RootState) => selectTotalPrice(state)); 
+
     console.log(cart)
     useEffect(() => {
         if (!collapsed) {
@@ -54,10 +57,18 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
                     close
                   </button>
                 </div>
+
                 <div className="Cart_main">
+
                 {cartItems.map((item)=>{
                   return <CartItem key={item.productId} item={item} />
                 })}
+                </div>
+                <div className="Cart_footer">
+                  <div className="Cart_footer_action">Add a note</div>
+                  <div>Sum in total: {totalPrice}</div>
+                  <button>Complete Order</button>
+                
                 </div>
                 
             </div>

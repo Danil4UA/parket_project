@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CartItemType, updateQuantity } from "../../model/slice/cartSlice";
+import { CartItemType, removeFromCart, updateQuantity } from "../../model/slice/cartSlice";
 import "./CartItem.css";
 import { RootState } from "@/redux/store";
 import { memo } from "react";
@@ -23,19 +23,18 @@ const CartItem = (props: CartItemProps) => {
   // id is taking from params not from props or from props we can take prodcutId
   const item = cartItems.find(cartItem => cartItem.productId === productId);
   if(!item){
-    console.log("item not found")
     return null
   }
   const handleIncrement = () => {
     dispatch(updateQuantity({ productId: item.productId, quantity: quantity + 1 }));
-    console.log(quantity)
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
       dispatch(updateQuantity({ productId: item.productId, quantity: quantity - 1 }));
+    }else {
+      dispatch(removeFromCart(item.productId));
     }
-    console.log(quantity)
   };
   
   return (  

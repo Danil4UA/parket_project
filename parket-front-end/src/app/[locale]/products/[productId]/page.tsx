@@ -14,11 +14,8 @@ interface ProductPageProps {
 
 const ProductPage: FC<ProductPageProps> = ({params}) => {
   const { productId } = use(params);
-    const dispatch = useDispatch();
-
-  // Find the product by ID
+  const dispatch = useDispatch();
   const product: Product | undefined = data.find((item) => item.productId === productId);
-  // Handle the case where the product is not found
   if (!product) {
     return (
       <section className="product-wrapper">
@@ -28,10 +25,8 @@ const ProductPage: FC<ProductPageProps> = ({params}) => {
       </section>
     );
   }
-
-  // Add to cart handler
   const handleAddToCart = () => {
-    const newProduct = { ...product, quantity: 1 }; // Add a default quantity
+    const newProduct = { ...product, quantity: 1 };
     dispatch(addToCart(newProduct));
   };
 
