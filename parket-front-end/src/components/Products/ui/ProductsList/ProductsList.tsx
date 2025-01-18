@@ -3,9 +3,10 @@ import ProductCard from "@/components/Products/ui/ProductCard/ProductCard";
 import "./ProductsList.css"
 import { data } from "../../model/data";
 import { useDispatch, useSelector } from "react-redux";
-import { filterProducts, setProducts } from "@/components/Products/model/productsSlice";
+import { setProducts } from "@/components/Products/model/productsSlice";
 import { useEffect } from "react";
 import { RootState } from "@/redux/store";
+import { filterProducts } from "@/components/Products/model/productsSlice";
 
 export interface Product {
     productId: string;
@@ -25,8 +26,6 @@ export interface Product {
 
 const ProductsList = () => {
     const dispatch = useDispatch()
-    const products = useSelector((state: RootState) => state.products.filteredProducts);
-
     useEffect(()=>{
         const fetchProducts = async () => {
             const fakeFetch = new Promise<Product[]>((resolve) => {
@@ -34,21 +33,29 @@ const ProductsList = () => {
             });
             
             const products = await fakeFetch;
-
             // we need to filter here
             dispatch(setProducts(products));
+
             // dispatch(filterProducts(filters))
 
           };
       
           fetchProducts();
     },[dispatch])
+
+    const filters = useSelector((state :RootState) => state.products.filters )
+    const productsList = useSelector((state: RootState) => state.products.filteredProducts);
+    useEffect(() => {
+    dispatch(filterProducts(filters));
+}, [filters, dispatch]);
+    
+    console.log(productsList)
    
     return (
         <>
     
         <div className="products__list">
-            {products.map((item: Product) => (
+            {productsList.map((item: Product) => (
                 <ProductCard 
                     key={item.productId} 
                     productId={item.productId}

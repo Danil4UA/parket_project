@@ -1,7 +1,7 @@
 "use client"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setFilters} from "@/components/Products/model/productsSlice";
+import { setFilters } from "@/components/Products/model/productsSlice";
 
 const ProductFilterLoader = () => {
     const dispatch = useDispatch();
