@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import CartLoader from "@/components/CartLoader/CartLoader";
+import ProductFilterLoader from "@/components/Products/ui/ProductFilterLoader/ProductFilterLoader";
 export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
@@ -21,6 +22,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       <ReduxProvider>
         <NextIntlClientProvider messages={messages}>
           <CartLoader />
+          <ProductFilterLoader />
           <Navbar />
           <div className="content-page">
             <div className="page-wrapper">

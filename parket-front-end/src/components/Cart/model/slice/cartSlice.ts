@@ -31,16 +31,12 @@ export const cartSlice = createSlice({
       } else {
         state.cartItems.push(item);
       }
-
-      // Update localStorage after adding to cart
       if (typeof window !== 'undefined') {
         localStorage.setItem('cart', JSON.stringify(state.cartItems));
       }
     },
     removeFromCart(state, action: PayloadAction<string>) {
       state.cartItems = state.cartItems.filter(item => item.productId !== action.payload);
-
-      // Update localStorage after removing item
       if (typeof window !== 'undefined') {
         localStorage.setItem('cart', JSON.stringify(state.cartItems));
       }
@@ -51,8 +47,6 @@ export const cartSlice = createSlice({
       if (item) {
         item.quantity = action.payload.quantity;
       }
-
-      // Update localStorage after changing quantity
       if (typeof window !== 'undefined') {
         localStorage.setItem('cart', JSON.stringify(state.cartItems));
       }
@@ -73,4 +67,5 @@ export const selectTotalItems = (state: { cart: { cartItems: CartItemType[] } })
 
 export const selectTotalPrice = (state: { cart: { cartItems: CartItemType[] } }) =>
   state.cart.cartItems.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0);
+
 export const cartReducer = cartSlice.reducer;

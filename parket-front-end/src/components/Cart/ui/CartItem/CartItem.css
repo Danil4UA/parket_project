@@ -10,14 +10,14 @@
 
 .CartItem__image {
     background-color: #f3f3f3; /* Placeholder color */
-    border-radius: 8px;
+    max-height: 80px;
+    max-width: 80px;
     overflow: hidden;
+    border-radius: 8px;
 }
 
 .CartItem__image img{
     object-fit: cover;
-    width: 80px;
-
 }
 
 .CartItem__info {

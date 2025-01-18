@@ -14,10 +14,7 @@ interface CartProps {
 
 const Cart = ({ collapsed, onClose }: CartProps) => {
     const t = useTranslations("Cart")
-    const cart = useSelector((state: RootState) => state.cart);
     const totalPrice = useSelector((state: RootState) => selectTotalPrice(state)); 
-
-    console.log(cart)
     useEffect(() => {
         if (!collapsed) {
           document.documentElement.style.overflow = "hidden";

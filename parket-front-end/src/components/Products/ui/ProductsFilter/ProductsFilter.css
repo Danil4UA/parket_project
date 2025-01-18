@@ -1,0 +1,41 @@
+.ProductsFilter {
+    width: 20%;
+    flex-shrink: 0; 
+    background-color: #fcfcfc; 
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.ProductsFilter h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.ProductsFilter_section {
+    margin-bottom: 20px;
+}
+
+.ProductsFilter_section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.ProductsFilter_color label,
+.ProductsFilter_type label,
+.ProductsFilter_material label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ProductsFilter_country select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 750px) {
+    .ProductsFilter {
+        display: none;
+    }
+}

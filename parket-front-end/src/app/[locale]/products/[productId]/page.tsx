@@ -1,19 +1,20 @@
 "use client"
 import { FC } from "react";
 import "./productDescription.css";
-import { data } from "@/components/Products/ProductsList/data";
+import { data } from "@/components/Products/model/data"
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/components/Cart/model/slice/cartSlice";
-import { Product } from "@/components/Products/ProductsList/ProductsList";
-import { use } from "react";
+import { Product } from "@/components/Products/ui/ProductsList/ProductsList";
+import { useParams } from "next/navigation";
+import Image from "next/image";
 interface ProductPageProps {
   params: {
     productId: string;
   };
 }
 
-const ProductPage: FC<ProductPageProps> = ({params}) => {
-  const { productId } = use(params);
+const ProductPage: FC<ProductPageProps> = () => {
+  const { productId } = useParams<{ productId: string }>()  
   const dispatch = useDispatch();
   const product: Product | undefined = data.find((item) => item.productId === productId);
   if (!product) {
@@ -34,8 +35,14 @@ const ProductPage: FC<ProductPageProps> = ({params}) => {
     <section className="product-wrapper">
       <div className="product__left">
         {/* Display product image */}
-        <img src={product.images[0]} alt={product.name} className="product__image" />
-      </div>
+        <Image
+          src="/assets/parket_image.jpg"
+          alt={product.name}
+          className="product__image"
+          width={500}  // You can specify the desired width
+          height={500} // You can specify the desired height
+          quality={75} // Optional: Adjust image quality
+        />      </div>
       <div className="product__info_wrapper">
         {/* Display product details */}
         <h1>{product.name}</h1>

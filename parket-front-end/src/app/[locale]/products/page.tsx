@@ -1,5 +1,5 @@
-import ProductsFilter from "@/components/Products/ProductsFilter/ProductsFilter";
-import ProductsList from "@/components/Products/ProductsList/ProductsList";
+import ProductsFilter from "@/components/Products/ui/ProductsFilter/ProductsFilter";
+import ProductsList from "@/components/Products/ui/ProductsList/ProductsList";
 import "./products.css";
 
 const ProductsPage = () => {

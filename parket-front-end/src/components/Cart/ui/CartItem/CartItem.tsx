@@ -3,6 +3,7 @@ import { CartItemType, removeFromCart, updateQuantity } from "../../model/slice/
 import "./CartItem.css";
 import { RootState } from "@/redux/store";
 import { memo } from "react";
+import Image from "next/image";
 interface CartItemProps {
   item: CartItemType;
 }
@@ -12,15 +13,13 @@ const CartItem = (props: CartItemProps) => {
     description,
     quantity,
     category,
-    images,
+    // images,
     productId,
   } = props.item
   const dispatch = useDispatch()
 
 
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-
-  // id is taking from params not from props or from props we can take prodcutId
   const item = cartItems.find(cartItem => cartItem.productId === productId);
   if(!item){
     return null
@@ -40,7 +39,7 @@ const CartItem = (props: CartItemProps) => {
   return (  
     <div className="CartItem">
       <div className="CartItem__image">
-        <img src={images[0]} alt={item.name} />
+      <Image src="/assets/parket_image.jpg" alt={item.name} width={80} height={80} />
       </div>
       <div className="CartItem__info">
         <h3>{name}</h3>
@@ -64,7 +63,7 @@ const CartItem = (props: CartItemProps) => {
           </div>
           <div>
             <p>
-              Price: <del>${item.price}</del>{" "}
+              $ {item.price}
             </p>
           </div>
         </div>

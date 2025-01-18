@@ -36,7 +36,7 @@ export const Navbar = () => {
 
       <div>LOGO</div>
       <div>
-        <button onClick={() => onToggle()}>Cart {cartItems}</button>
+        <button onClick={() => onToggle()}>Cart {cartItems > 0 && cartItems}</button>
         <button>search</button>
       </div>
 
