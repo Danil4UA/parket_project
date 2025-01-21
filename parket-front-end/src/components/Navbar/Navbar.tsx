@@ -3,8 +3,9 @@ import Cart from "../Cart/ui/Cart/Cart";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Navbar.css";
 import { useState } from "react";
-import menuIcon from "@/app/assets/hamburger-menu.svg";
-
+import MenuIcon from "@/app/assets/hamburger-menu.svg";
+import CartIcon from "@/app/assets/cart.svg"
+import SearchIcon from "@/app/assets/search.svg"
 import LangSwitcher from "@/widgets/LangSwitcher/ui/LangSwitcher";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -26,18 +27,32 @@ export const Navbar = () => {
   return (
     <div className="Navbar">
       <div className="navbar-left">
-        <span onClick={onToggleMenu}>
-          {
-            // eslint-disable-next-line @next/next/no-img-element
-          }<img width={"24px"} src={menuIcon.src} alt="Menu icon" />
+        <span 
+          className="navbar_menu"
+          onClick={onToggleMenu}>
+          <MenuIcon />
         </span>
         <LangSwitcher />
       </div>
 
       <div>LOGO</div>
-      <div>
-        <button onClick={() => onToggle()}>Cart {cartItems > 0 && cartItems}</button>
-        <button>search</button>
+      <div className="navbar-right">
+        <div 
+          className="navbar_cart"
+          onClick={() => onToggle()}
+          >
+          <CartIcon />
+          <span 
+            className="navbar_cart_coutner"
+          >{cartItems > 0 && cartItems}</span>
+          
+          </div>
+
+        <span
+          className="navbar_search"
+        >
+          <SearchIcon />
+        </span>
       </div>
 
       <Cart collapsed={collapsedCart} onClose={()=>setCollapsedCart(true)} />

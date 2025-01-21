@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import "./OrderPage.css"
 import { RootState } from "@/redux/store"
 import { selectTotalPrice } from "@/components/Cart/model/slice/cartSlice"
+import Image from "next/image"
 
 const OrderPage = () => {
     const cartItems = useSelector((state:RootState)=> state.cart.cartItems)
@@ -52,7 +53,7 @@ const OrderPage = () => {
             return(
                 <div key={item.productId} className="Order__items">
                     <div className="Order__items_image">
-                        <img src={item.images[0]} />
+                        <Image  src="/assets/parket_image.jpg" alt={item.name} width={60} height={60} />
                     </div>
                     <div className="Order__items_info">
                         {item.description}

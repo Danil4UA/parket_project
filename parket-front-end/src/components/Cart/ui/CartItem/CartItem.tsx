@@ -12,7 +12,6 @@ const CartItem = (props: CartItemProps) => {
     name,
     description,
     quantity,
-    category,
     // images,
     productId,
   } = props.item
@@ -39,17 +38,14 @@ const CartItem = (props: CartItemProps) => {
   return (  
     <div className="CartItem">
       <div className="CartItem__image">
-      <Image src="/assets/parket_image.jpg" alt={item.name} width={80} height={80} />
+        <Image src="/assets/parket_image.jpg" alt={item.name} width={80} height={80} />
       </div>
       <div className="CartItem__info">
-        <h3>{name}</h3>
-        <p>{description}</p>
-        <p>
-          Category: <strong>{category}</strong>
-        </p>
+        <p className="CartItem_title">{name}</p>
+        <p className="CartItem_description">{description}</p>
         <div className="CartItem__info_bottom">
           <div className="CartItem__quantity">
-            <button 
+            <button
               onClick={handleDecrement}
               >
                 -
@@ -62,9 +58,9 @@ const CartItem = (props: CartItemProps) => {
             </button>
           </div>
           <div>
-            <p>
-              $ {item.price}
-            </p>
+            <span>
+            ₪ {item.price}
+            </span>
           </div>
         </div>
       </div>

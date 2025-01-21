@@ -43,7 +43,6 @@ export const cartSlice = createSlice({
     },
     updateQuantity(state, action: PayloadAction<{ productId: string; quantity: number }>) {
       const item = state.cartItems.find(cartItem => cartItem.productId === action.payload.productId);
-
       if (item) {
         item.quantity = action.payload.quantity;
       }

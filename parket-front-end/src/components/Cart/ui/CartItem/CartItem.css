@@ -1,30 +1,38 @@
 .CartItem {
-    height: 120px;
+    height: 100px;
     box-sizing: border-box;
     display: flex;
     gap: 20px;
+    margin-top:20px;
     padding-bottom: 20px;
     align-items: center;
     border-bottom: 1px solid #ddd;
 }
 
+
 .CartItem__image {
-    background-color: #f3f3f3; /* Placeholder color */
-    max-height: 80px;
-    max-width: 80px;
+    background-color: #f3f3f3;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 4px;
+    min-width: 80px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.CartItem__image img{
-    object-fit: cover;
+.CartItem__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Сохраняет пропорции и обрезает лишнее */
 }
 
 .CartItem__info {
-    width: fit-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100%;
 }
 
 .CartItem__info p {
@@ -43,30 +51,43 @@
 .CartItem__quantity {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 4px;
 }
 
 .CartItem__quantity button {
     border: none;
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
+    box-sizing: border-box;
+    background: none;
+    width: 25px;
+    height: 25px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
+}
+.CartItem__quantity div {
+width: 25px;
+font-size: 12px;
+text-align: center;
 }
 
 .CartItem__quantity button:hover {
-    background-color: #0056b3;
+    background-color: #f8f8f8;
 }
 
-.CartItem__quantity div {
-    min-width: 20px;
-    text-align: center;
-    font-weight: bold;
+.CartItem__quantity button:active {
+    background-color: #efefef;
 }
 
 .CartItem__price {
     font-weight: bold;
     font-size: 16px;
+}
+
+
+.Cart_footer_total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
 }

@@ -1,3 +1,4 @@
+"use client"
 import { classNames } from "@/shared/lib/classNames/classNames";
 import "./Cart.css";
 import { useEffect } from "react";
@@ -6,7 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import CartItem from "../CartItem/CartItem";
 import { selectTotalPrice } from "../../model/slice/cartSlice";
-
+import CloseIcon from "@/app/assets/close.svg"
 interface CartProps {
     collapsed: boolean;
     onClose: () => void;
@@ -50,8 +51,9 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
                   <p>{t("cart")}</p>
                   <button 
                       onClick={()=>onClose()}
+                      className="close-icon"
                   >
-                    close
+                    <CloseIcon />
                   </button>
                 </div>
 
@@ -62,9 +64,15 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
                 })}
                 </div>
                 <div className="Cart_footer">
-                  <div className="Cart_footer_action">Add a note</div>
-                  <div>Sum in total: {totalPrice}</div>
-                  <button>Complete Order</button>
+                  <div className="Cart_footer_total">
+                    <span>Total:</span>
+                    <span>₪ {totalPrice}</span>
+                  </div>
+
+                  <button
+                    className="complete_btn"
+                  >Complete Order
+                  </button>
                 
                 </div>
                 
