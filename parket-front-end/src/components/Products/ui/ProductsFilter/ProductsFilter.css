@@ -1,10 +1,27 @@
 .ProductsFilter {
     width: 20%;
     flex-shrink: 0; 
-    background-color: #fcfcfc; 
-    padding: 10px;
-    border: 1px solid black;
+    padding: 20px;
+    margin: 0 20px;
+    position: sticky; 
+    top: 0; 
+    z-index: 10;
+    height: fit-content
 }
+
+/* .ProductsFilter input {
+    outline: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px; 
+    height: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 3px; 
+}
+
+ */
+
 
 .ProductsFilter h2 {
     font-size: 1.5rem;
@@ -27,6 +44,10 @@
     margin-bottom: 5px;
 }
 
+.ProductsFilter_country {
+    display: flex;
+    flex-direction: column;
+}
 .ProductsFilter_country select {
     width: 100%;
     padding: 8px;

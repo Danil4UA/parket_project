@@ -1,6 +1,8 @@
 .products-page-container {
-    display: flex; /* Устанавливаем Flexbox */
-    flex-direction: row; /* Располагаем элементы в строку */
-    width: 100%; /* Занимает всю ширину страницы */
-    min-height: 100vh; /* Минимальная высота страницы */
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    min-height: 100vh;
+    gap: 20px;
+    position: relative; 
 }

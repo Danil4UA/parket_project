@@ -1,9 +1,14 @@
 .products__list {
-    flex-grow: 1; /* Контент занимает оставшуюся ширину */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: max-content;
     padding: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    gap: 15px;
-    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
 
+@media (max-width: 980px) {
+    .products__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
