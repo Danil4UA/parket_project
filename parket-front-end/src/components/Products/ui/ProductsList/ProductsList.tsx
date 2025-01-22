@@ -1,15 +1,17 @@
 "use client"
 import ProductCard from "@/components/Products/ui/ProductCard/ProductCard";
 import "./ProductsList.css"
-import { data } from "../../model/data";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "@/components/Products/model/productsSlice";
 import { useEffect } from "react";
 import { RootState } from "@/redux/store";
 import { filterProducts } from "@/components/Products/model/productsSlice";
+import { useState } from "react";
+import productsServices from "@/services/prodcuts.services";
+import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 
 export interface Product {
-    productId: string;
+    _id: string;
     name: string;
     description: string;
     price: string;
@@ -25,45 +27,51 @@ export interface Product {
   }
 
 const ProductsList = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch()
+
     useEffect(()=>{
         const fetchProducts = async () => {
-            const fakeFetch = new Promise<Product[]>((resolve) => {
-              setTimeout(() => resolve(data), 1000);
-            });
-            
-            const products = await fakeFetch;
-            dispatch(setProducts(products));
+            try {
+                const products = await productsServices.getAllProducts();
+                if(!products){
+                    console.log("failed detching products")
+                }
+                dispatch(setProducts(products));
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setIsLoading(false);
+              }
           };
-      
           fetchProducts();
     },[dispatch])
 
     const filters = useSelector((state :RootState) => state.products.filters )
     const productsList = useSelector((state: RootState) => state.products.filteredProducts);
     useEffect(() => {
-    dispatch(filterProducts(filters));
-}, [filters, dispatch]);
+        dispatch(filterProducts(filters));
+    }, [filters, dispatch]);
     
-    console.log(productsList)
-   
     return (
-        <>
-    
         <div className="products__list">
-            {productsList.map((item: Product) => (
-                <ProductCard 
-                    key={item.productId} 
-                    productId={item.productId}
-                    productName={item.name} 
-                    productPrice={item.price} 
-                    productDescription={item.description}
-                    discount={item.discount}
-                />
-            ))}
+          {isLoading ? (
+            Array.from({ length: 12 }).map((_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))
+          ) : (
+            productsList.map((product) => (
+              <ProductCard
+                key={product._id}
+                productId={product._id}
+                productName={product.name}
+                productPrice={product.price}
+                discount={product.discount}
+              />
+            ))
+          )}
         </div>
-        </>
-    );
+      );
 };
 
 export default ProductsList;

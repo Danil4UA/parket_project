@@ -2,7 +2,7 @@ import type { Product } from "../ui/ProductsList/ProductsList";
 
 export const data: Product[] = [
   {
-    productId: "1",
+    _id: "1",
     name: "Elegant Chair",
     description: "A stylish and comfortable chair for your living room.",
     price: "120",
@@ -20,7 +20,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
   {
-    productId: "2",
+    _id: "2",
     name: "Modern Table",
     description: "A sleek and modern table for your workspace.",
     price: "250",
@@ -38,7 +38,7 @@ export const data: Product[] = [
     type: "Plank",
   },
   {
-    productId: "3",
+    _id: "3",
     name: "Cozy Sofa",
     description: "A cozy and spacious sofa for your family.",
     price: "500",
@@ -56,7 +56,7 @@ export const data: Product[] = [
     type: "Chevron",
   },
   {
-    productId: "4",
+    _id: "4",
     name: "Luxury Armchair",
     description: "A premium armchair for an elegant interior.",
     price: "300",
@@ -74,7 +74,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
   {
-    productId: "5",
+    _id: "5",
     name: "Wooden Desk",
     description: "A natural wooden desk for your home office.",
     price: "400",
@@ -92,7 +92,7 @@ export const data: Product[] = [
     type: "Plank",
   },
   {
-    productId: "6",
+    _id: "6",
     name: "Dining Table",
     description: "A spacious table for dining with family.",
     price: "600",
@@ -110,7 +110,7 @@ export const data: Product[] = [
     type: "Chevron",
   },
   {
-    productId: "7",
+    _id: "7",
     name: "Minimalist Coffee Table",
     description: "A sleek coffee table for your modern living room.",
     price: "150",
@@ -128,7 +128,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
     {
-    productId: "8",
+      _id: "8",
     name: "Sleek Side Table",
     description: "A modern side table for any space.",
     price: "100",
@@ -146,7 +146,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
   {
-    productId: "9",
+    _id: "9",
     name: "Wooden Bookshelf",
     description: "A stylish bookshelf for your books and decorations.",
     price: "220",
@@ -164,7 +164,7 @@ export const data: Product[] = [
     type: "Plank",
   },
   {
-    productId: "10",
+    _id: "10",
     name: "Adjustable Office Chair",
     description: "A comfortable chair for long hours of work.",
     price: "180",
@@ -182,7 +182,7 @@ export const data: Product[] = [
     type: "Plank",
   },
   {
-    productId: "11",
+    _id: "11",
     name: "Comfortable Lounge Chair",
     description: "A comfortable lounge chair for your relaxation.",
     price: "320",
@@ -200,7 +200,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
   {
-    productId: "12",
+    _id: "12",
     name: "Compact Coffee Table",
     description: "A space-saving coffee table for small living rooms.",
     price: "90",
@@ -218,7 +218,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
   {
-    productId: "13",
+    _id: "13",
     name: "Spacious Wardrobe",
     description: "A spacious wardrobe for your clothing storage.",
     price: "700",
@@ -236,7 +236,7 @@ export const data: Product[] = [
     type: "Chevron",
   },
   {
-    productId: "14",
+    _id: "14",
     name: "Versatile Shelf",
     description: "A versatile shelf to organize your belongings.",
     price: "150",
@@ -254,7 +254,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
   {
-    productId: "15",
+    _id: "15",
     name: "Stylish TV Stand",
     description: "A stylish TV stand for your living room.",
     price: "250",
@@ -272,7 +272,7 @@ export const data: Product[] = [
     type: "Plank",
   },
   {
-    productId: "16",
+    _id: "16",
     name: "Elegant Nightstand",
     description: "A nightstand to complement your bedroom.",
     price: "120",
@@ -290,7 +290,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
   {
-    productId: "17",
+    _id: "17",
     name: "Classic Desk",
     description: "A classic desk for your home office.",
     price: "350",
@@ -308,7 +308,7 @@ export const data: Product[] = [
     type: "Herringbone",
   },
   {
-    productId: "18",
+    _id: "18",
     name: "Modern Sideboard",
     description: "A modern sideboard for your living room.",
     price: "500",
@@ -326,7 +326,7 @@ export const data: Product[] = [
     type: "Plank",
   },
   {
-    productId: "19",
+    _id: "19",
     name: "Contemporary Armchair",
     description: "A contemporary armchair for your living room.",
     price: "450",
@@ -344,7 +344,7 @@ export const data: Product[] = [
     type: "Chevron",
   },
   {
-    productId: "20",
+    _id: "20",
     name: "Wooden Bed Frame",
     description: "A wooden bed frame to complete your bedroom.",
     price: "600",

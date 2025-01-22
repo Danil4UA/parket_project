@@ -1,3 +1,4 @@
+"use client"
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Link } from "@/i18n/routing";
 import "./ProductCard.css";
@@ -37,7 +38,7 @@ const ProductCard = ({ productId, productName, productPrice, discount = 0 }: Pro
 
                 <span className="price__discounted">
                   <span className="prefix">₪</span>
-                  {productPriceWithDiscount}
+                  {productPriceWithDiscount.toFixed()}
                 </span>
                 <span className="price__original">
                   <span className="prefix">₪</span>

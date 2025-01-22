@@ -16,7 +16,7 @@ interface ProductPageProps {
 const ProductPage: FC<ProductPageProps> = () => {
   const { productId } = useParams<{ productId: string }>()  
   const dispatch = useDispatch();
-  const product: Product | undefined = data.find((item) => item.productId === productId);
+  const product: Product | undefined = data.find((item) => item._id === productId);
   if (!product) {
     return (
       <section className="product-wrapper">
