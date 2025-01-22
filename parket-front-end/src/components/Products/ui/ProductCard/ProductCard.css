@@ -14,6 +14,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-size: 16px;
     overflow: hidden;
+    position: relative;
 }
 
 /* .ProductCard:hover {
@@ -96,4 +97,35 @@
 .ProductCard:hover .card__information_button {
     opacity: 1; /* Показать кнопку */
     visibility: visible;
+}
+
+.card__sale_badge {
+    position: absolute;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    top: 30px;
+    right: 30px;
+}
+.price__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;    
+}
+.price__original {
+    text-decoration: line-through; /* Strikethrough the original price */
+    color: #888; /* Light grey to indicate that it's no longer valid */
+    margin-right: 10px; /* Space between the original price and the discounted price */
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    right: -60px;
+}
+
+.price__discounted {
+    font-size: 1.2em; /* Slightly larger font size to emphasize the discounted price */
+    font-weight: bold;
+    color: #d9534f; /* Red or any other color to indicate the discounted price */
 }

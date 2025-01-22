@@ -8,9 +8,12 @@ interface ProductCardProps {
   productName: string;
   productPrice: string;
   productDescription?: string;
+  discount?: number
 }
 
-const ProductCard = ({ productId, productName, productPrice }: ProductCardProps) => {
+const ProductCard = ({ productId, productName, productPrice, discount = 0 }: ProductCardProps) => {
+  const productPriceWithDiscount = discount ? (Number(productPrice) * ((100 - discount) / 100)) : Number(productPrice);
+
   return (
     <div className={classNames("ProductCard", {}, [])}>
       <Link href={`/products/${productId}`} className="card__media">
@@ -22,14 +25,30 @@ const ProductCard = ({ productId, productName, productPrice }: ProductCardProps)
             alt={productName} 
             />
         </div>
+        {discount > 0 &&
+          <div className="card__sale_badge">-{discount}%</div>
+        }
+
         <div className="card__information">
           <div>{productName}</div>
           <div className="card__information_price">
-            <span className="prefix">₪</span>
-            {productPrice}
-            <span className="price__suffix">
-              .00
-            </span>
+            {discount ? (
+              <div className="price__container">
+
+                <span className="price__discounted">
+                  <span className="prefix">₪</span>
+                  {productPriceWithDiscount}
+                </span>
+                <span className="price__original">
+                  <span className="prefix">₪</span>
+                  {productPrice}
+                </span>
+              </div>
+            ) : (
+              <span>
+                <span className="prefix">₪</span>
+                {productPrice}</span>
+            )}
 
           </div>
           <div className="card__information_button">

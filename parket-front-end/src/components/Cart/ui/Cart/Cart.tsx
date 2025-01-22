@@ -8,13 +8,21 @@ import { RootState } from "@/redux/store";
 import CartItem from "../CartItem/CartItem";
 import { selectTotalPrice } from "../../model/slice/cartSlice";
 import CloseIcon from "@/app/assets/close.svg"
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+
+
 interface CartProps {
     collapsed: boolean;
     onClose: () => void;
 }
 
 const Cart = ({ collapsed, onClose }: CartProps) => {
-    const t = useTranslations("Cart")
+  const t = useTranslations("Cart")
+  const pathname = usePathname()
+  const router = useRouter();
+  const lng = pathname.split('/')[1]
+
     const totalPrice = useSelector((state: RootState) => selectTotalPrice(state)); 
     useEffect(() => {
         if (!collapsed) {
@@ -43,38 +51,44 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
         };
       }, [onClose]);
       const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-      console.log(cartItems)      
+      const handleComplete = (e: React.MouseEvent) => {
+        e.preventDefault()
+        router.push(`/${lng}/order`)
+        onClose()
+      }
     return (
         <>
             <div className={classNames("Cart", { collapsedCart: collapsed }, [])}>
-                <div className="Cart_header">
-                  <p>{t("cart")}</p>
-                  <button 
-                      onClick={()=>onClose()}
-                      className="close-icon"
-                  >
-                    <CloseIcon />
-                  </button>
-                </div>
-
-                <div className="Cart_main">
-
-                {cartItems.map((item)=>{
-                  return <CartItem key={item.productId} item={item} />
-                })}
-                </div>
-                <div className="Cart_footer">
-                  <div className="Cart_footer_total">
-                    <span>Total:</span>
-                    <span>₪ {totalPrice}</span>
+              {!collapsed &&
+                <div className="Cart_wrapper">
+                  <div className="Cart_header">
+                    <p>{t("cart")}</p>
+                    <button 
+                        onClick={()=>onClose()}
+                        className="close-icon"
+                    >
+                      <CloseIcon />
+                    </button>
                   </div>
-
-                  <button
-                    className="complete_btn"
-                  >Complete Order
-                  </button>
-                
+                  <div className="Cart_main">
+                    {cartItems.map((item)=>{
+                      return <CartItem key={item.productId} item={item} />
+                    })}
+                  </div>
+                  <div className="Cart_footer">
+                    <div className="Cart_footer_total">
+                      <span>Total:</span>
+                      <span>₪ {totalPrice}</span>
+                    </div>
+                    <button
+                      className="complete_btn"
+                      onClick={handleComplete}
+                    >Complete Order
+                    </button>
+                  </div>
                 </div>
+              }
+                
                 
             </div>
             <div 

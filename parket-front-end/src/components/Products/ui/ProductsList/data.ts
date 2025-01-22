@@ -6,7 +6,7 @@ import { Product } from "./ProductsList";
       productId: "1",
       name: "Elegant Chair",
       description: "A stylish and comfortable chair for your living room.",
-      price: "120",
+      price: "100",
       images: [
         "https://example.com/image2.jpg",
         "https://example.com/image3.jpg",

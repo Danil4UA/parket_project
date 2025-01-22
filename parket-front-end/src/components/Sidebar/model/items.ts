@@ -6,11 +6,6 @@ export interface SidebarItemType {
 
 export const SidebarItemsList: SidebarItemType[] = [
   {
-    path: "/about",
-    Icon: "",
-    text: "About"
-  },
-  {
     path: "/",
     Icon: "",
     text: "Home"

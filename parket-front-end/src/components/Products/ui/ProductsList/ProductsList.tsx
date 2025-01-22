@@ -33,11 +33,7 @@ const ProductsList = () => {
             });
             
             const products = await fakeFetch;
-            // we need to filter here
             dispatch(setProducts(products));
-
-            // dispatch(filterProducts(filters))
-
           };
       
           fetchProducts();
@@ -61,7 +57,8 @@ const ProductsList = () => {
                     productId={item.productId}
                     productName={item.name} 
                     productPrice={item.price} 
-                    productDescription={item.description} 
+                    productDescription={item.description}
+                    discount={item.discount}
                 />
             ))}
         </div>
