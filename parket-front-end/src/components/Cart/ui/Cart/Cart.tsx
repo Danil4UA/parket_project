@@ -72,7 +72,7 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
                   </div>
                   <div className="Cart_main">
                     {cartItems.map((item)=>{
-                      return <CartItem key={item.productId} item={item} />
+                      return <CartItem key={item._id} item={item} />
                     })}
                   </div>
                   <div className="Cart_footer">

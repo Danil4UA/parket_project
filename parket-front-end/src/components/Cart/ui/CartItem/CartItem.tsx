@@ -13,25 +13,25 @@ const CartItem = (props: CartItemProps) => {
     description,
     quantity,
     // images,
-    productId,
+    _id,
   } = props.item
   const dispatch = useDispatch()
 
 
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-  const item = cartItems.find(cartItem => cartItem.productId === productId);
+  const item = cartItems.find(cartItem => cartItem._id === _id);
   if(!item){
     return null
   }
   const handleIncrement = () => {
-    dispatch(updateQuantity({ productId: item.productId, quantity: quantity + 1 }));
+    dispatch(updateQuantity({ productId: item._id, quantity: quantity + 1 }));
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
-      dispatch(updateQuantity({ productId: item.productId, quantity: quantity - 1 }));
+      dispatch(updateQuantity({ productId: item._id, quantity: quantity - 1 }));
     }else {
-      dispatch(removeFromCart(item.productId));
+      dispatch(removeFromCart(item._id));
     }
   };
   

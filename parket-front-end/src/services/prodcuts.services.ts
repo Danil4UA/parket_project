@@ -10,6 +10,15 @@ const productsServices = {
           throw error;
         }
       },
+      getAllProductsById: async (productId: string) => {
+        try {
+          const response = await axios.get(`http://localhost:4000/api/products/${productId}`);
+          return response.data; 
+        } catch (error) {
+          console.error('Error fetching products:', error);
+          throw error;
+        }
+      },
 }
 
 
