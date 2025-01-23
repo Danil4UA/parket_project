@@ -3,6 +3,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { Link } from "@/i18n/routing";
 import "./ProductCard.css";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 interface ProductCardProps {
   productId: string;
@@ -13,6 +14,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ productId, productName, productPrice, discount = 0 }: ProductCardProps) => {
+  const t = useTranslations("Product")
   const productPriceWithDiscount = discount ? (Number(productPrice) * ((100 - discount) / 100)) : Number(productPrice);
 
   return (
@@ -53,7 +55,7 @@ const ProductCard = ({ productId, productName, productPrice, discount = 0 }: Pro
 
           </div>
           <div className="card__information_button">
-            Get More details
+            {t("GetMoreDetails")}
           </div>
         </div>
       </Link>

@@ -1,6 +1,10 @@
 {
   "Cart": {
-    "cart": "Cart"
+    "cart": "Cart",
+    "complete": "Complete order"
+  },
+  "Product": {
+    "GetMoreDetails": "Get more details"
   },
   "HomePage": {
     "title": "Home Page"
@@ -23,6 +27,11 @@
     "Germany": "Germany",
     "Poland": "Poland",
     "USA": "USA",
-    "France": "France"
+    "France": "France",
+    "SortBy": "Sort by",
+    "LowToHight": "Price: Low to High",
+    "HightToLow": "Price: High to Low",
+    "AtoZ": "Name: A to Z",
+    "ZtoA": "Name: Z to A"
   }
 }

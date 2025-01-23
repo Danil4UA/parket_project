@@ -14,23 +14,21 @@ const OrderPage = () => {
         <div className="Order__wrapper">
             <div className="Order__wrapper_left">
                 <div>
-                    <h2>Delivery</h2>
                     <div className="Delivery__section">
                         <div>
                             <label>
-                                <input type="radio" name="delivery" value="shipping" />
+                                <input type="radio" name="delivery" value="shipping" className="delivery__radio"/>
                                 Shipping
                             </label>
                         </div>
                         <div>
                             <label>
-                            <input type="radio" name="delivery" value="pickup" />
+                            <input type="radio" name="delivery" value="pickup" className="delivery__radio" />
                             Pickup
                             </label>
                         </div>
                     </div>
                 </div>
-
                 <div className="Order__section Order__section--address">
                     <input className="Order__input" type="text" placeholder="Country" />
                     <input className="Order__input--half" type="text" placeholder="Name" />
@@ -54,6 +52,9 @@ const OrderPage = () => {
                 <div key={item._id} className="Order__items">
                     <div className="Order__items_image">
                         <Image  src="/assets/parket_image.jpg" alt={item.name} width={60} height={60} />
+                        <div className="Order__items_count">
+                            <span>{item.quantity}</span>
+                        </div>
                     </div>
                     <div className="Order__items_info">
                         {item.description}
@@ -66,22 +67,40 @@ const OrderPage = () => {
             }
             )}
                 
+                <div className="order__footer">
+                    <div className="promo_code">
+                        <input
+                            type="text"
+                            placeholder="Enter promo code"
+                        />
+                        <button 
+                        >
+                            Submit
+                        </button>
+                    </div>
+                    <div className="order__amount">
+                        <div>Total amount:</div>
+                        <div>ILS {totalPrice}₪</div> 
+                    </div>
 
-
-
-                <div className="promo_code">
-                    <input
-                        type="text"
-                        placeholder="Enter promo code"
-                    />
-                    <button 
-                    >
-                        Submit
-                    </button>
+                    <div className="order__delivery">
+                        <div>Delivery:</div>
+                        <div>Free</div>
+                    </div>
+                    <div className="order__total">
+                        <div className="order__total_container">
+                            <span className="order__total_sum">Total</span>
+                            <span className="order__total_taxes">Including taxes: xxx</span>
+                            
+                        </div>
+                        <div className="order__total_sum"><span className="order__total_taxes">ILS</span> {totalPrice}₪</div>
+                    </div>
+  
                 </div>
-                <div>Total amount: ILS {totalPrice} ₪</div>
-                <div>Delivery: Free</div>
-                <div>Total including taxes: {totalPrice} ₪</div>
+               
+            </div>
+            <div className="order__overlay">
+                
             </div>
         </div>
     )

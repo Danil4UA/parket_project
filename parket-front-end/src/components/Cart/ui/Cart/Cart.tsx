@@ -83,7 +83,8 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
                     <button
                       className="complete_btn"
                       onClick={handleComplete}
-                    >Complete Order
+                    >
+                      {t("complete")}
                     </button>
                   </div>
                 </div>
