@@ -9,7 +9,7 @@ import { filterProducts } from "@/components/Products/model/productsSlice";
 import { useState } from "react";
 import productsServices from "@/services/prodcuts.services";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
-
+import ProductSort from "../ProductSort/ProductSort";
 export interface Product {
     _id: string;
     name: string;
@@ -54,6 +54,10 @@ const ProductsList = () => {
     }, [filters, dispatch]);
     
     return (
+      <div className="products__list_wrapper">
+        <div className="products__list_header">
+          <ProductSort />
+        </div>
         <div className="products__list">
           {isLoading ? (
             Array.from({ length: 12 }).map((_, index) => (
@@ -71,6 +75,7 @@ const ProductsList = () => {
             ))
           )}
         </div>
+      </div>
       );
 };
 

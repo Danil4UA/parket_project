@@ -129,3 +129,10 @@
     font-weight: bold;
     color: #d9534f; /* Red or any other color to indicate the discounted price */
 }
+
+
+@media screen and (max-width: 750px) {
+    .ProductCard {
+        padding: 5px;
+    }
+}

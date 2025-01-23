@@ -4,5 +4,25 @@
   },
   "HomePage": {
     "title": "Home Page"
+  },
+  "Filter": {
+    "Color": "Color",
+    "White": "White",
+    "Gray": "Gray",
+    "Beige": "Beige",
+    "Brown": "Brown",
+    "Type": "Type",
+    "Herringbone": "Herringbone",
+    "Chevron": "Chevron",
+    "Plank": "Plank",
+    "Material": "Material",
+    "Wood": "Wood",
+    "SPC": "SPC",
+    "Country": "Country",
+    "Italy": "Italy",
+    "Germany": "Germany",
+    "Poland": "Poland",
+    "USA": "USA",
+    "France": "France"
   }
 }

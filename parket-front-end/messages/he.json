@@ -4,5 +4,25 @@
   },
   "HomePage": {
     "title": "דף הבית"
+  },
+  "Filter": {
+    "Color": "צבע",
+    "White": "לבן",
+    "Gray": "אפור",
+    "Beige": "בז׳",
+    "Brown": "חום",
+    "Type": "סוג",
+    "Herringbone": "פישבון",
+    "Chevron": "שברון",
+    "Plank": "קרש",
+    "Material": "חומר",
+    "Wood": "עץ",
+    "SPC": "SPC",
+    "Country": "מדינה",
+    "Italy": "איטליה",
+    "Germany": "גרמניה",
+    "Poland": "פולין",
+    "USA": "ארה\"ב",
+    "France": "צרפת"
   }
 }

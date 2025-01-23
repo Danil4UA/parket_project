@@ -4,5 +4,25 @@
   },
   "HomePage": {
     "title": "Домашняя Страница"
+  },
+ "Filter": {
+    "Color": "Цвет",
+    "White": "Белый",
+    "Gray": "Серый",
+    "Beige": "Бежевый",
+    "Brown": "Коричневый",
+    "Type": "Тип",
+    "Herringbone": "Ёлочка",
+    "Chevron": "Шеврон",
+    "Plank": "Доска",
+    "Material": "Материал",
+    "Wood": "Дерево",
+    "SPC": "SPC",
+    "Country": "Страна",
+    "Italy": "Италия",
+    "Germany": "Германия",
+    "Poland": "Польша",
+    "USA": "США",
+    "France": "Франция"
   }
 }
