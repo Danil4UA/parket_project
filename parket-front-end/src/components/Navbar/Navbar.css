@@ -1,12 +1,13 @@
 .Navbar {
   width: 100%;
   height: var(--navbar-height);
-  background: var(--bg-color);
+  background: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 60px;
   box-sizing: border-box;
+  color: white;
 }
 .navbar-left {
   display: flex;
@@ -19,6 +20,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+  fill: white;
 }
 
 .navbar_cart {
@@ -26,6 +28,7 @@
   cursor: pointer;
   width: 24px;
   height: 24px;
+  fill: white;
 } 
 .navbar_search {
   width: 24px;

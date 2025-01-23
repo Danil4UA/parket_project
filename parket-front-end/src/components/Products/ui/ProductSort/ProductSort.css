@@ -1,8 +1,5 @@
 .ProductSort {
-    padding: 10px 20px;
-    outline: none;
-    background: none;
-    border: none;
-    border: 1px solid grey;
-    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    width: fit-content;
 }

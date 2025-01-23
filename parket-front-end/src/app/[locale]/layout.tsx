@@ -26,9 +26,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           <Navbar />
           <div className="content-page">
             <div className="page-wrapper">
-              
                 {children}
-              
             </div>
           </div>
           <Footer />

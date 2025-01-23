@@ -2,6 +2,9 @@
   "Cart": {
     "cart": "עֲגָלָה"
   },
+  "Product": {
+    "GetMoreDetails": "Get more details"
+  },
   "HomePage": {
     "title": "דף הבית"
   },

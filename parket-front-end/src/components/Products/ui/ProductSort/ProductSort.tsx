@@ -4,13 +4,22 @@ import { setFilteredList } from "../../model/productsSlice";
 import { Product } from "../ProductsList/ProductsList";
 import "./ProductSort.css"
 import { useTranslations } from "next-intl";
+import Select from "@/shared/ui/Select/Select";
+
 const ProductSort = () => {
     const dispatch = useDispatch()
     const productsList = useSelector((state: RootState) => state.products.filteredProducts);
     const t = useTranslations("Filter")
 
-    const handleSortProducts = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const sortCriteria = e.target.value;
+    const sortOptions = [
+        { value: "priceAsc", label: t("LowToHight") },
+        { value: "priceDesc", label: t("HightToLow") },
+        { value: "nameAsc", label: t("AtoZ") },
+        { value: "nameDesc", label: t("ZtoA") }
+    ];
+
+    const handleSortProducts = (selectedLabel: string) => {
+        const sortCriteria = sortOptions.find(option => option.label === selectedLabel)?.value;
 
         const sortedList: Product[] = [...productsList].sort((a, b) => {
             switch (sortCriteria) {
@@ -29,16 +38,15 @@ const ProductSort = () => {
 
         dispatch(setFilteredList(sortedList));
     };
+
     return (
-        <select
-            className="ProductSort"
-            onChange={handleSortProducts} defaultValue="">
-            <option value="" disabled>{t("SortBy")}</option>
-            <option value="priceAsc">{t("LowToHight")}</option>
-            <option value="priceDesc">{t("HightToLow")}</option>
-            <option value="nameAsc">{t("AtoZ")}</option>
-            <option value="nameDesc">{t("ZtoA")}</option>
-        </select>
+        <div className="ProductSort">
+            <Select 
+                options={sortOptions.map(option => option.label)}
+                onChange={handleSortProducts}
+                placeholder={t("SortBy")}
+            /> 
+        </div>
     )
 }
 

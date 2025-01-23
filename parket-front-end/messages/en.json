@@ -10,7 +10,7 @@
     "title": "Home Page"
   },
   "Filter": {
-    "Color": "Color",
+    "Color": "Color tone",
     "White": "White",
     "Gray": "Gray",
     "Beige": "Beige",
@@ -28,7 +28,7 @@
     "Poland": "Poland",
     "USA": "USA",
     "France": "France",
-    "SortBy": "Sort by",
+    "SortBy": "Sort products by",
     "LowToHight": "Price: Low to High",
     "HightToLow": "Price: High to Low",
     "AtoZ": "Name: A to Z",

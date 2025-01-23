@@ -1,7 +1,7 @@
 "use client"
 import { classNames } from "@/shared/lib/classNames/classNames";
 import "./Cart.css";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -104,4 +104,4 @@ const Cart = ({ collapsed, onClose }: CartProps) => {
     );
 };
 
-export default Cart;
+export default memo(Cart);

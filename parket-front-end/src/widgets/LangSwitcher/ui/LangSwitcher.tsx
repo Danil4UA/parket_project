@@ -2,6 +2,7 @@
 import "./LangSwitcher.css"
 import { memo, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import Select from "@/shared/ui/Select/Select";
 
 export const LangSwitcher = () => {
   const pathname = usePathname();
@@ -19,22 +20,29 @@ export const LangSwitcher = () => {
     }
   }, [pathname]);
 
-  const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLocale = e.target.value;
+  const onSelectChange = (newLocale: string) => {
     const path = pathname.split("/").slice(2).join("/"); 
     router.push(`/${newLocale}/${path}`);  
   };
 
+  const languageOptions = [
+    { value: 'en', label: 'English' },
+    { value: 'ru', label: 'Русский' },
+    { value: 'he', label: 'עברית' }
+  ];
+
   return (
-    <select 
-      className="LangSwitcher"
-      value={currentLocale} 
-      onChange={onSelectChange}
-    >
-      <option value="en">English</option>
-      <option value="ru">Русский</option>
-      <option value="he">עברית</option>
-    </select>
+      <Select
+      className="select__arrow_white"
+        options={languageOptions.map(lang => lang.label)}
+        onChange={(selectedLabel) => {
+          const selectedLocale = languageOptions.find(lang => lang.label === selectedLabel)?.value;
+          if (selectedLocale) {
+            onSelectChange(selectedLocale);
+          }
+        }}
+        placeholder={languageOptions.find(lang => lang.value === currentLocale)?.label || 'Select Language'}
+      />
   );
 };
 

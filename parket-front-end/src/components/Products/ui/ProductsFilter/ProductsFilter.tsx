@@ -1,10 +1,11 @@
 "use client"
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {selectFilters, filterProducts } from "@/components/Products/model/productsSlice";
+import { selectFilters, filterProducts } from "@/components/Products/model/productsSlice";
 import "./ProductsFilter.css";
 import { RootState } from "@/redux/store";
 import { useTranslations } from "next-intl";
+
 export interface Filters {
     color: string[];
     type: string[];
@@ -32,7 +33,6 @@ const ProductsFilter = () => {
         } else if (type === "radio" || type === "select-one") {
             updatedFilters[name as keyof Filters] = [value];
         }
-            console.log("updated filters ",updatedFilters)
         dispatch(filterProducts(updatedFilters));
     };
 
@@ -40,9 +40,9 @@ const ProductsFilter = () => {
         <div className="ProductsFilter">
             {/* Color Filter */}
             <div className="ProductsFilter_section">
-                <h3>{t("Color")}</h3>
+                <h3 className="ProductsFilter_title">{t("Color")}</h3>
                 <div className="ProductsFilter_color">
-                    <label>
+                    <label className="color-checkbox">
                         <input
                             type="checkbox"
                             name="color"
@@ -50,9 +50,9 @@ const ProductsFilter = () => {
                             onChange={handleFilterChange}
                             checked={filters.color.includes("White")}
                         /> 
-                        {t("White")}
+                        <span className="color-square" style={{backgroundColor: '#f2f2f2'}}></span>
                     </label>
-                    <label>
+                    <label className="color-checkbox">
                         <input
                             type="checkbox"
                             name="color"
@@ -60,9 +60,9 @@ const ProductsFilter = () => {
                             onChange={handleFilterChange}
                             checked={filters.color.includes("Gray")}
                         /> 
-                        {t("Gray")}
+                        <span className="color-square" style={{backgroundColor: '#808080'}}></span>
                     </label>
-                    <label>
+                    <label className="color-checkbox">
                         <input
                             type="checkbox"
                             name="color"
@@ -70,9 +70,9 @@ const ProductsFilter = () => {
                             onChange={handleFilterChange}
                             checked={filters.color.includes("Beige")}
                         /> 
-                        {t("Beige")}
+                        <span className="color-square" style={{backgroundColor: '#F5F5DC'}}></span>
                     </label>
-                    <label>
+                    <label className="color-checkbox">
                         <input
                             type="checkbox"
                             name="color"
@@ -80,14 +80,14 @@ const ProductsFilter = () => {
                             onChange={handleFilterChange}
                             checked={filters.color.includes("Brown")}
                         />
-                        {t("Brown")}
+                        <span className="color-square" style={{backgroundColor: '#8B4513'}}></span>
                     </label>
                 </div>
             </div>
 
             {/* Type Filter */}
             <div className="ProductsFilter_section">
-                <h3>{t("Type")}</h3>
+                <h3 className="ProductsFilter_title">{t("Type")}</h3>
                 <div className="ProductsFilter_type">
                     <label>
                         <input
@@ -124,7 +124,7 @@ const ProductsFilter = () => {
 
             {/* Material Filter */}
             <div className="ProductsFilter_section">
-                <h3>{t("Material")}</h3>
+                <h3 className="ProductsFilter_title">{t("Material")}</h3>
                 <div className="ProductsFilter_material">
                     <label>
                         <input
@@ -151,7 +151,7 @@ const ProductsFilter = () => {
 
             {/* Country Filter */}
             <div className="ProductsFilter_section">
-                <h3>{t("Country")}</h3>
+                <h3 className="ProductsFilter_title">{t("Country")}</h3>
                 <div className="ProductsFilter_country">
                     <label>
                         <input

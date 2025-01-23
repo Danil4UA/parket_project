@@ -4,6 +4,7 @@ import { Link } from "@/i18n/routing";
 import "./ProductCard.css";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useMemo } from "react";
 
 interface ProductCardProps {
   productId: string;
@@ -16,13 +17,19 @@ interface ProductCardProps {
 const ProductCard = ({ productId, productName, productPrice, discount = 0 }: ProductCardProps) => {
   const t = useTranslations("Product")
   const productPriceWithDiscount = discount ? (Number(productPrice) * ((100 - discount) / 100)) : Number(productPrice);
+  const images = ["/assets/parket_image.jpg", "/assets/parket_example_1.jpg", "/assets/parket_example_2.jpg","/assets/parket_example_3.jpg"]
+
+  // Генерируем случайное изображение один раз
+  const randomImage = useMemo(() => {
+    return images[Math.floor(Math.random() * images.length)];
+  }, [images]);
 
   return (
     <div className={classNames("ProductCard", {}, [])}>
       <Link href={`/products/${productId}`} className="card__media">
         <div className="card__image">
           <Image
-            src="/assets/parket_image.jpg" 
+            src={randomImage}
             width={300}
             height={300}
             alt={productName} 
