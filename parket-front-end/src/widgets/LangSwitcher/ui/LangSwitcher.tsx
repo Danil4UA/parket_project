@@ -33,7 +33,7 @@ export const LangSwitcher = () => {
 
   return (
       <Select
-      className="select__arrow_white"
+        className="select__arrow_white"
         options={languageOptions.map(lang => lang.label)}
         onChange={(selectedLabel) => {
           const selectedLocale = languageOptions.find(lang => lang.label === selectedLabel)?.value;

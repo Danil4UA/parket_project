@@ -6,6 +6,7 @@ import "./productDescription.css";
 import { addToCart } from "@/components/Cart/model/slice/cartSlice";
 import { Product } from "@/components/Products/ui/ProductsList/ProductsList";
 import { useParams } from "next/navigation";
+import QuestionIcon from "@/app/assets/question.svg"
 // import Image from "next/image";
 import productsServices from "@/services/prodcuts.services";
 import Gallery from "@/components/Gallery/Gallery";
@@ -81,34 +82,53 @@ const ProductPage: FC = () => {
   return (
     <section className="product-wrapper">
       <div className="product__left">
-        {/* <Image
-          src="/assets/parket_image.jpg"
-          alt={product.name}
-          className="product__image"
-          width={500}
-          height={500}
-          quality={75}
-        /> */}
         <Gallery images={images} />
       </div>
+
       <div className="product__info_wrapper">
+
         <p>{product.name}</p>
         <p>{product.price}</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab ipsum quis sapiente reiciendis pariatur architecto ratione omnis aut accusantium dignissimos saepe et magnam eos amet, aspernatur facere placeat suscipit nam.</p>
-        <p>{product.description}</p>
-        <p>Price: ${product.price}</p>
+        <p>Рекомендуется добавить дополнительно 10% к сумме, необходимой для амортизации при установке.</p>
+
         <button 
           className="product__add_cart"
-          onClick={handleAddToCart}>Add
-           to Cart</button>
-        <div>
-          Possible take away from out branch
+          onClick={handleAddToCart}>
+            Add to Cart
+        </button>
+
+        <div className="product__info_delivery">
+          <p>Possible take away from out branch</p>
+          <p>Ready for 2-3 days</p>
+          <p>
+            <span
+              className="check__store"
+
+            >Check the store details <span><QuestionIcon/></span>
+            </span>
+          </p>
         </div>
+        {   /** Характеристики  */ }
         <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus ipsam laudantium omnis. Excepturi nisi recusandae doloremque, assumenda blanditiis minima nobis impedit dolorum maxime pariatur quae hic laudantium, alias voluptatibus accusantium exercitationem ad quasi quaerat eius a dignissimos. Repudiandae maxime nam accusamus officiis quisquam necessitatibus nemo nulla laudantium iste debitis alias ipsa reiciendis optio beatae inventore ex consequuntur voluptatibus aliquid, molestias modi vero quas dolorem ducimus. Dignissimos libero aliquam tempora atque! Voluptas tempora necessitatibus repellat ab repudiandae laborum delectus quisquam quaerat. Laboriosam eveniet laborum inventore molestiae molestias aperiam ullam itaque provident! Obcaecati expedita laborum blanditiis enim eos iusto reprehenderit assumenda?
+          <p>{product.description}</p>
+          <p>Сделано компанией хххх</p>
+          <p>Длина xxx ширина xxx</p>
+          <p>Цвет xxx</p>
         </div>
-        <div>Get help to calculate</div>
+
+        { /** Описание товара  */}
+        <div> 
+          <p>
+          Идеальное сочетание дизайна и долговечности, этот тип напольного покрытия способен противостоять любым опасностям истирания, 
+          будь то в коммерческих центрах или в домашнем использовании. Ламинированные изделия Berry Alloc — это сочетание эстетики и передовых технологий. 
+          Самая прочная линейка ламината на рынке! Berry Alloc производит свою продукцию в Европе в соответствии с самыми строгими стандартами 
+          с упором на простую установку, не требующую сложных операций, революционный на рынке метод запирания, снижение уровня шума, 
+          защиту от влаги и простоту обслуживания.
+          </p>
+        </div>
+
         <div>About brand</div>
+
         <div>Delivery Policy</div>
       </div>
     </section>

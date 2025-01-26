@@ -41,7 +41,6 @@ const Gallery = ({ images }: GalleryProps) => {
         <img src={mainImage} alt="Main" />
       </div>
 
-      {/* Thumbnails */}
       <div
         className="Gallery__thumbnails"
         ref={thumbnailsRef}

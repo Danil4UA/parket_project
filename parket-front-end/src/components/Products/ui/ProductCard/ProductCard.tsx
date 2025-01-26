@@ -17,6 +17,7 @@ interface ProductCardProps {
 const ProductCard = ({ productId, productName, productPrice, discount = 0 }: ProductCardProps) => {
   const t = useTranslations("Product")
   const productPriceWithDiscount = discount ? (Number(productPrice) * ((100 - discount) / 100)) : Number(productPrice);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const images = ["/assets/parket_image.jpg", "/assets/parket_example_1.jpg", "/assets/parket_example_2.jpg","/assets/parket_example_3.jpg"]
 
   // Генерируем случайное изображение один раз

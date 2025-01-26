@@ -15,7 +15,7 @@
 }
 
 .ProductsFilter_section input[type="checkbox"] {
-    margin-right: 5px;
+    margin: 0 5px;
 }
 
 .ProductsFilter_title {
@@ -64,4 +64,11 @@
 
 .color-checkbox input:checked + .color-square {
     border-color: #000;
+}
+
+
+@media screen and (max-width: 750px) {
+    .ProductsFilter {
+        display: none;
+    }
 }

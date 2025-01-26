@@ -1,8 +1,15 @@
 .products-page-container {
     display: flex; 
+    max-width: 1840px;
     flex-direction: row; 
     width: 100%; 
     min-height: 100vh;
-    gap: 20px;
     position: relative; 
+}
+
+@media (max-width: 750px) {
+    .products-page-container {
+        flex-direction: column;
+        justify-content: center;
+    }
 }

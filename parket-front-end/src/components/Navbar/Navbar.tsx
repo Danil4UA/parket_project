@@ -5,7 +5,7 @@ import "./Navbar.css";
 import { useState } from "react";
 import MenuIcon from "@/app/assets/hamburger-menu.svg";
 import CartIcon from "@/app/assets/cart.svg"
-import SearchIcon from "@/app/assets/search.svg"
+// import SearchIcon from "@/app/assets/search.svg"
 import LangSwitcher from "@/widgets/LangSwitcher/ui/LangSwitcher";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -48,11 +48,11 @@ export const Navbar = () => {
           
           </div>
 
-        <span
+        {/* <span
           className="navbar_search"
         >
           <SearchIcon />
-        </span>
+        </span> */}
       </div>
 
       <Cart collapsed={collapsedCart} onClose={()=>setCollapsedCart(true)} />

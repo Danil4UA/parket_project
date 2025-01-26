@@ -16,8 +16,6 @@ const CartItem = (props: CartItemProps) => {
     _id,
   } = props.item
   const dispatch = useDispatch()
-
-
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const item = cartItems.find(cartItem => cartItem._id === _id);
   if(!item){
@@ -32,6 +30,12 @@ const CartItem = (props: CartItemProps) => {
       dispatch(updateQuantity({ productId: item._id, quantity: quantity - 1 }));
     }else {
       dispatch(removeFromCart(item._id));
+    }
+  };
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(event.target.value, 10);
+    if (!isNaN(value) && value > 0) {
+      dispatch(updateQuantity({ productId: item._id, quantity: value }));
     }
   };
   
@@ -50,7 +54,15 @@ const CartItem = (props: CartItemProps) => {
               >
                 -
               </button>
-            <div>{quantity}</div>
+            <div>
+              <input
+              type="number"
+              value={quantity}
+              onChange={handleInputChange}
+              min="0"
+              className="CartItem__input"
+            />
+            </div>
             <button
             onClick={handleIncrement}
             >

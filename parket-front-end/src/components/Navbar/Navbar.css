@@ -44,7 +44,8 @@
 
 .navbar_cart_coutner {
   position: absolute;
-  top: 0;
+  background: black;
+  top: -5px;
   right: -10px;
   font-size: 10px;
 }
@@ -89,4 +90,10 @@
 
 .custom-select.open .options {
   display: block;
+}
+
+@media screen and (max-width: 980px) {
+  .Navbar {
+    padding: 15px 40px;
+  }
 }

@@ -1,6 +1,7 @@
 {
   "Cart": {
-    "cart": "עֲגָלָה"
+    "cart": "עֲגָלָה",
+    "complete":"השלם הזמנה"
   },
   "Product": {
     "GetMoreDetails": "Get more details"
@@ -26,6 +27,11 @@
     "Germany": "גרמניה",
     "Poland": "פולין",
     "USA": "ארה\"ב",
-    "France": "צרפת"
+    "France": "צרפת",
+    "SortBy": "מיין מוצרים לפי",
+    "LowToHight": "מחיר: מהנמוך לגבוה",
+    "HightToLow": "מחיר: מהגבוה לנמוך",
+    "AtoZ": "שם: מ-א' עד ת'",
+    "ZtoA": "שם: מת' עד א'"
   }
 }

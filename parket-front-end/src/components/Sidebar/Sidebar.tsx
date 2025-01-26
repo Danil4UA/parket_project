@@ -4,6 +4,9 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useEffect, useMemo } from "react";
 import { SidebarItemsList } from "./model/items";
 import SidebarItem from "./SideBarItem/SideBarItem";
+import InstagramIcon from "@/app/assets/instagram.svg"
+import FacebookIcon from "@/app/assets/facebook.svg"
+import TelegramIcon from "@/app/assets/telegram.svg"
 
 interface SidebarProps {
   collapsed: boolean;
@@ -45,7 +48,25 @@ export const Sidebar = ({ collapsed, onClose }: SidebarProps) => {
   return (
     <>
       {/* Sidebar */}
-      <div className={classNames("Sidebar", { collapsed }, [])}>{!collapsed && <div className="items">{itemsList}</div>}</div>
+      <div className={classNames("Sidebar", { collapsed }, [])}>
+        {!collapsed && 
+        <div className="Sidebar_wrapper">
+          <div className="items">{itemsList}</div>
+          <div className="Sidebar_footer">
+            <div className="Sidebar_footer_language">
+
+            </div>
+            <div className="Sidebar_footer_contact">
+                <div>
+                  <span><InstagramIcon /></span>
+                  <span><FacebookIcon /></span>
+                  <span><TelegramIcon /></span>
+                </div>
+            </div>
+          </div>
+        </div>
+      }
+      </div>
       {/* Overlay */}
       <div className={classNames("overlay", { overlayActive: !collapsed })} onClick={onClose} />
     </>

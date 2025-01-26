@@ -4,7 +4,6 @@
     min-width: 150px;
     max-height: 400px;
     background-color: #fff;
-    border-radius: 5px;
     font-size: 18px;
     overflow: hidden;
     display: flex;
@@ -14,6 +13,7 @@
     font-size: 16px;
     overflow: hidden;
     position: relative;
+    padding-bottom: 30px;
 }
 
 /* .ProductCard:hover {
@@ -25,7 +25,7 @@
     aspect-ratio: 1 / 1;
     max-width: 300px; 
     max-height: 300px; 
-    border-radius: 10px; 
+    border-radius: 4px; 
     overflow: hidden;
     margin-bottom: 10px; 
     position: relative;
@@ -84,17 +84,18 @@
 .card__information_button {
     position: absolute;
     top: -90px;
-    background-color: white;
     padding: 15px 20px;
     border-radius: 5px;
     cursor: pointer;
-    opacity: 0; /* Скрыть кнопку */
+    opacity: 0;
     visibility: hidden; /* Сделать её невидимой */
     transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .ProductCard:hover .card__information_button {
-    opacity: 1; /* Показать кнопку */
+    background-color: rgba(255, 255, 255, 0.6); 
+    color: black;
+    opacity: 1;
     visibility: visible;
 }
 

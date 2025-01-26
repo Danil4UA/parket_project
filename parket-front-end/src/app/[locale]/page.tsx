@@ -1,13 +1,12 @@
-"use client"
-import { useTranslations } from "next-intl";
-
+"use client";
+import HomeHeader from "@/components/Home/HomeHeader/HomeHeader";
+import HomeMain from "@/components/Home/HomeMain/HomeMain";
+import "./home.css";
 export default function HomePage() {
-  const t = useTranslations("HomePage");
-
-
   return (
-    <div>
-      <h1>{t("title")}</h1>
+    <div className="HomePage_wapper">
+      <HomeHeader />
+      <HomeMain />
     </div>
   );
 }
