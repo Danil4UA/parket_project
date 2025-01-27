@@ -1,8 +1,15 @@
+"use client";
 import React from "react";
 import { ParallaxProvider, ParallaxBanner } from "react-scroll-parallax";
 import "./HomeHeader.css";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const HomeHeader = () => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const lng = pathname.split("/")[1];
+
   return (
     <div className="HomePage_wrapper">
       <ParallaxProvider>
@@ -24,7 +31,9 @@ const HomeHeader = () => {
                       use our bespoke flooring service.
                     </div>
                     <div className="HomeHeader_btn_container">
-                      <button className="HomeHeader_btn">VIEW PRODUCTS</button>
+                      <button onClick={() => router.push(`/${lng}/products/all`)} className="HomeHeader_btn">
+                        VIEW PRODUCTS
+                      </button>
                     </div>
                   </div>
                 </div>

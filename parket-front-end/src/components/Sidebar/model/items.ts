@@ -11,8 +11,18 @@ export const SidebarItemsList: SidebarItemType[] = [
     text: "Home"
   },
   {
-    path: "/products",
+    path: "/products/flooring",
     Icon: "",
-    text: "Products"
+    text: "Flooring"
+  },
+  {
+    path: "/products/sales",
+    Icon: "",
+    text: "Sales"
+  },
+  {
+    path: "/products/all",
+    Icon: "",
+    text: "Catalog"
   }
 ];

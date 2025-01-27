@@ -19,18 +19,16 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} dir={locale === "he" ? "rtl" : "ltr"}>
       <body>
-      <ReduxProvider>
-        <NextIntlClientProvider messages={messages}>
-          <CartLoader />
-          <ProductFilterLoader />
-          <Navbar />
-          <div className="content-page">
-            <div className="page-wrapper">
-                {children}
+        <ReduxProvider>
+          <NextIntlClientProvider messages={messages}>
+            <CartLoader />
+            <ProductFilterLoader />
+            <Navbar />
+            <div className="content-page">
+              <div className="page-wrapper">{children}</div>
             </div>
-          </div>
-          <Footer />
-        </NextIntlClientProvider>
+            <Footer />
+          </NextIntlClientProvider>
         </ReduxProvider>
       </body>
     </html>
