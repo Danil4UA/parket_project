@@ -59,7 +59,7 @@
 .ProductCard__details .price {
   font-weight: bold;
   font-size: 16px;
-  color: #2a9d8f; /* Приятный зелёный для цены */
+  color: #2a9d8f;
 }
 
 .card__information {

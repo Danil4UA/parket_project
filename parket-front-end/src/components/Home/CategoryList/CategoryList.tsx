@@ -27,10 +27,10 @@ export const categories: Category[] = [
     description: "Explore our complete product catalog"
   },
   {
-    image: "/assets/category_catalog.jpg",
-    path: "/products/roof",
-    title: "Roof",
-    description: "Durable and reliable roofing solutions"
+    image: "/assets/category_walls.jpg",
+    path: "/products/walls",
+    title: "Walls",
+    description: "Durable and reliable walls solutions"
   }
 ];
 

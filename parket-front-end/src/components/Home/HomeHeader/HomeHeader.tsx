@@ -26,9 +26,9 @@ const HomeHeader = () => {
                       <br />
                       <span>EFFECT PARQUET</span>
                     </h1>
-                    <div>
-                      Luxury wood flooring at guaranteed lowest UK prices backed by price match promise. Order free samples, buy online or
-                      use our bespoke flooring service.
+                    <div className="HomeHeader__text">
+                      Premium wooden flooring at unbeatable prices, guaranteed by our price match policy. Order free samples, shop online,
+                      or explore our personalized flooring solutions.
                     </div>
                     <div className="HomeHeader_btn_container">
                       <button onClick={() => router.push(`/${lng}/products/all`)} className="HomeHeader_btn">

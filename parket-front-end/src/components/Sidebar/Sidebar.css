@@ -22,7 +22,7 @@
 }
 .Sidebar_footer > div:not(:last-child) {
   border-bottom: 1px solid rgb(215, 215, 215);
- }
+}
 
 .Sidebar_footer_language {
   flex: 1;
@@ -45,11 +45,11 @@
   height: 25px;
   cursor: pointer;
   transition: transform 0.3s ease;
- }
- 
- .Sidebar_footer_contact span:hover {
+}
+
+.Sidebar_footer_contact span:hover {
   transform: scale(1.1);
- }
+}
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
