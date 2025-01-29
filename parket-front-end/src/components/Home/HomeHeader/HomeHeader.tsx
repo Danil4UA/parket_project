@@ -4,11 +4,13 @@ import { ParallaxProvider, ParallaxBanner } from "react-scroll-parallax";
 import "./HomeHeader.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const HomeHeader = () => {
   const pathname = usePathname();
   const router = useRouter();
   const lng = pathname.split("/")[1];
+  const t = useTranslations("HomePage");
 
   return (
     <div className="HomePage_wrapper">
@@ -20,19 +22,16 @@ const HomeHeader = () => {
               children: (
                 <div className="HomeHeader__wrapper">
                   <div className="HomeHeader__content">
-                    <p>for residential & trade customers</p>
+                    <p>{t("subtitle")}</p>
                     <h1 className="HomeHeader__title">
-                      <span>PREMIUM</span>
+                      <span>{t("premium")}</span>
                       <br />
-                      <span>EFFECT PARQUET</span>
+                      <span>{t("effect_parquet")}</span>
                     </h1>
-                    <div className="HomeHeader__text">
-                      Premium wooden flooring at unbeatable prices, guaranteed by our price match policy. Order free samples, shop online,
-                      or explore our personalized flooring solutions.
-                    </div>
+                    <div className="HomeHeader__text">{t("description")}</div>
                     <div className="HomeHeader_btn_container">
                       <button onClick={() => router.push(`/${lng}/products/all`)} className="HomeHeader_btn">
-                        VIEW PRODUCTS
+                        {t("view_products")}
                       </button>
                     </div>
                   </div>

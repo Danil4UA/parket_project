@@ -2,11 +2,13 @@ import Image from "next/image";
 import "./CategoryCard.css";
 import { Category } from "../CategoryList/CategoryList";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 interface CategoryCardProps {
   category: Category;
 }
 const CategoryCard = ({ category }: CategoryCardProps) => {
+  const t = useTranslations("Categories");
   return (
     <div className="CategoryCard">
       <Link href={category.path}>
@@ -19,7 +21,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
           <p className="CategoryCard__title">{category.title}</p>
           <p className="CategoryCard__description">{category.description}</p>
           <div className="HomeHeader_btn_container">
-            <button className="HomeHeader_btn">VIEW NOW</button>
+            <button className="HomeHeader_btn">{t("VIEW")}</button>
           </div>
         </div>
       </Link>

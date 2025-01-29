@@ -1,45 +1,46 @@
 import React from "react";
+import { useTranslations } from "next-intl";
 import "./Footer.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
+  const t = useTranslations("Footer");
   return (
     <footer className="footer">
       <div className="footer_container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>Contact Us</h3>
+            <h3>{t("contact_us")}</h3>
             <div className="contact-info">
               <p className="contact-item">
-                <span>📧</span> info@example.com
+                <span>📧</span> {t("email")}
               </p>
               <p className="contact-item">
-                <span>📱</span> +1 234 567 890
+                <span>📱</span> {t("phone")}
               </p>
               <p className="contact-item">
-                <span>📍</span> 123 Street Name, City
+                <span>📍</span> {t("address")}
               </p>
             </div>
           </div>
 
           <div className="footer-section">
-            <h3>Quick Links</h3>
+            <h3>{t("quick_links")}</h3>
             <ul className="quick-links">
-              {["About Us", "Services", "Contact", "Privacy Policy"].map((item) => (
+              {["about_us", "services", "contact", "privacy_policy"].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase().replace(" ", "-")}`}>{item}</a>
+                  <a href={`#${item.toLowerCase().replace("_", "-")}`}>{t(item)}</a>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="footer-section">
-            <h3>Follow Us</h3>
+            <h3>{t("follow_us")}</h3>
             <div className="social-grid">
-              {["Facebook", "Twitter", "Instagram", "LinkedIn"].map((social) => (
+              {["facebook", "twitter", "instagram", "linkedin"].map((social) => (
                 <a key={social} href={`#${social.toLowerCase()}`} className="social-link">
-                  {social}
+                  {t(social)}
                 </a>
               ))}
             </div>
@@ -48,8 +49,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>
-            © {currentYear} All Rights Reserved.
-            <span>Made with ♥️ by Effect Parquet</span>
+            © {currentYear} {t("all_rights_reserved")}.<span>{t("made_by")}</span>
           </p>
         </div>
       </div>

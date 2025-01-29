@@ -1,15 +1,15 @@
 import CategoryList from "../CategoryList/CategoryList";
+import { useTranslations } from "next-intl";
 import "./HomeMain.css";
 
 const HomeMain = () => {
+  const t = useTranslations("HomePage");
+
   return (
     <div className="HomeMain">
       <div className="HomeMain__title">
-        <span>ПРЕМИУМ ДЕРЕВЯННЫЕ ПОЛЫ</span>
-        <p>
-          Думаете, обновление пола — это дорого? Подумайте ещё раз! Ознакомьтесь с нашей коллекцией доступных и качественных инженерных
-          деревянных покрытий и преобразите ваше пространство, не выходя за пределы бюджета.
-        </p>
+        <span>{t("premium_wood_floors")}</span>
+        <p>{t("floor_update_message")}</p>
       </div>
       <CategoryList />
     </div>

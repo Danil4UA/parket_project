@@ -4,8 +4,10 @@ import "./OrderPage.css";
 import { RootState } from "@/redux/store";
 import { selectTotalPrice } from "@/components/Cart/model/slice/cartSlice";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const OrderPage = () => {
+  const t = useTranslations("Order");
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const totalPrice = useSelector((state: RootState) => selectTotalPrice(state));
 
@@ -18,64 +20,62 @@ const OrderPage = () => {
             <div>
               <label>
                 <input type="radio" name="delivery" value="shipping" className="delivery__radio" />
-                Shipping
+                {t("shipping")}
               </label>
             </div>
             <div>
               <label>
                 <input type="radio" name="delivery" value="pickup" className="delivery__radio" />
-                Pickup
+                {t("pickup")}
               </label>
             </div>
           </div>
         </div>
         <div className="Order__section Order__section--address">
-          <input className="Order__input" type="text" placeholder="Country" />
-          <input className="Order__input--half" type="text" placeholder="Name" />
-          <input className="Order__input--half" type="text" placeholder="Last Name" />
-          <input className="Order__input" type="text" placeholder="Address" />
-          <input className="Order__input--half" type="text" placeholder="Apartment" />
-          <input className="Order__input--half" type="text" placeholder="Postal Code" />
-          <input className="Order__input--half" type="text" placeholder="City" />
-          <input className="Order__input--half" type="text" placeholder="Phone Number" />
+          <input className="Order__input" type="text" placeholder={t("country")} />
+          <input className="Order__input--half" type="text" placeholder={t("name")} />
+          <input className="Order__input--half" type="text" placeholder={t("lastName")} />
+          <input className="Order__input" type="text" placeholder={t("address")} />
+          <input className="Order__input--half" type="text" placeholder={t("apartment")} />
+          <input className="Order__input--half" type="text" placeholder={t("postalCode")} />
+          <input className="Order__input--half" type="text" placeholder={t("city")} />
+          <input className="Order__input--half" type="text" placeholder={t("phoneNumber")} />
         </div>
 
-        <button className="complete_order">Complete Order</button>
+        <button className="complete_order">{t("completeOrder")}</button>
       </div>
       <div className="Order__wrapper_right">
-        {cartItems.map((item) => {
-          return (
-            <div key={item._id} className="Order__items">
-              <div className="Order__items_image">
-                <Image src="/assets/parket_image.jpg" alt={item.name} width={60} height={60} />
-                <div className="Order__items_count">
-                  <span>{item.quantity}</span>
-                </div>
+        {cartItems.map((item) => (
+          <div key={item._id} className="Order__items">
+            <div className="Order__items_image">
+              <Image src="/assets/parket_image.jpg" alt={item.name} width={60} height={60} />
+              <div className="Order__items_count">
+                <span>{item.quantity}</span>
               </div>
-              <div className="Order__items_info">{item.description}</div>
-              <div className="price">{item.price}</div>
             </div>
-          );
-        })}
+            <div className="Order__items_info">{item.description}</div>
+            <div className="price">{item.price}</div>
+          </div>
+        ))}
 
         <div className="order__footer">
           <div className="promo_code">
-            <input type="text" placeholder="Enter promo code" />
-            <button>Submit</button>
+            <input type="text" placeholder={t("enterPromoCode")} />
+            <button>{t("submit")}</button>
           </div>
           <div className="order__amount">
-            <div>Total amount:</div>
+            <div>{t("totalAmount")}:</div>
             <div>ILS {totalPrice}₪</div>
           </div>
 
           <div className="order__delivery">
-            <div>Delivery:</div>
-            <div>Free</div>
+            <div>{t("delivery")}:</div>
+            <div>{t("free")}</div>
           </div>
           <div className="order__total">
             <div className="order__total_container">
-              <p className="order__total_sum">Total</p>
-              <p className="order__total_taxes">Including taxes: xxx</p>
+              <p className="order__total_sum">{t("total")}</p>
+              <p className="order__total_taxes">{t("includingTaxes")}: xxx</p>
             </div>
             <div className="order__total_sum">
               <span className="order__total_taxes">ILS</span> {totalPrice}₪

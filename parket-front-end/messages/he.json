@@ -1,13 +1,30 @@
 {
   "Cart": {
     "cart": "עֲגָלָה",
-    "complete":"השלם הזמנה"
+    "complete": "השלם הזמנה"
   },
   "Product": {
     "GetMoreDetails": "Get more details"
   },
   "HomePage": {
-    "title": "דף הבית"
+    "subtitle": "ללקוחות פרטיים ומסחריים",
+    "premium": "פרימיום",
+    "effect_parquet": "אפקט פרקט",
+    "description": "רצפות עץ יוקרתיות במחירים ללא תחרות, מובטחים על ידי מדיניות התאמת המחירים שלנו. הזמינו דוגמאות חינם, קנו אונליין או חקרו את הפתרונות המותאמים אישית שלנו.",
+    "view_products": "צפה במוצרים",
+    "premium_wood_floors": "רצפות עץ פרימיום",
+    "floor_update_message": "חושבים ששדרוג הרצפה יקר? תחשבו שוב! גלו את הקולקציה שלנו של כיסויי עץ מהונדסים איכותיים ובמחירים נוחים, ושדרגו את החלל שלכם מבלי לחרוג מהתקציב."
+  },
+  "Categories": {
+    "flooring_title": "ריצוף",
+    "flooring_description": "ריצוף איכותי לכל סגנון",
+    "sales_title": "מבצעים",
+    "sales_description": "הנחות מדהימות על מוצרים נבחרים",
+    "catalog_title": "קטלוג",
+    "catalog_description": "גלו את קטלוג המוצרים המלא שלנו",
+    "walls_title": "קירות",
+    "walls_description": "פתרונות קיר עמידים ואמינים",
+    "VIEW": "צפה עכשיו"
   },
   "Filter": {
     "Color": "צבע",
@@ -33,5 +50,43 @@
     "HightToLow": "מחיר: מהגבוה לנמוך",
     "AtoZ": "שם: מ-א' עד ת'",
     "ZtoA": "שם: מת' עד א'"
+  },
+  "Footer": {
+    "contact_us": "צור קשר",
+    "email": "info@example.com",
+    "phone": "+1 234 567 890",
+    "address": "123 שם הרחוב, עיר",
+    "quick_links": "קישורים מהירים",
+    "about_us": "אודות",
+    "services": "שירותים",
+    "contact": "צור קשר",
+    "privacy_policy": "מדיניות פרטיות",
+    "follow_us": "עקוב אחרינו",
+    "facebook": "פייסבוק",
+    "twitter": "טוויטר",
+    "instagram": "אינסטגרם",
+    "linkedin": "לינקדאין",
+    "all_rights_reserved": "כל הזכויות שמורות",
+    "made_by": "נוצר באהבה על ידי Effect Parquet"
+  },
+  "Order": {
+    "shipping": "משלוח",
+    "pickup": "איסוף עצמי",
+    "country": "ארץ",
+    "name": "שם",
+    "lastName": "שם משפחה",
+    "address": "כתובת",
+    "apartment": "דירה",
+    "postalCode": "מיקוד",
+    "city": "עיר",
+    "phoneNumber": "מספר טלפון",
+    "completeOrder": "סיים הזמנה",
+    "enterPromoCode": "הכנס קוד קופון",
+    "submit": "שלח",
+    "totalAmount": "סכום כולל",
+    "delivery": "משלוח",
+    "free": "חינם",
+    "total": "סך הכל",
+    "includingTaxes": "כולל מיסים"
   }
 }
