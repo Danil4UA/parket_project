@@ -10,6 +10,7 @@ import QuestionIcon from "@/app/assets/question.svg";
 // import Image from "next/image";
 import productsServices from "@/services/prodcuts.services";
 import Gallery from "@/components/Gallery/Gallery";
+import Loader from "@/shared/ui/Loader/Loader";
 
 const images = ["/assets/parket_example_3.jpg", "/assets/parket_example_1.jpg", "/assets/parket_example_2.jpg"];
 
@@ -50,9 +51,7 @@ const ProductPage: FC = () => {
   if (isLoading) {
     return (
       <section className="product-wrapper">
-        <div className="product__info_wrapper">
-          <p>Loading...</p>
-        </div>
+        <Loader />
       </section>
     );
   }

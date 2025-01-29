@@ -13,14 +13,16 @@ const CartItem = (props: CartItemProps) => {
     description,
     quantity,
     // images,
-    _id,
-  } = props.item
-  const dispatch = useDispatch()
+    _id
+  } = props.item;
+  const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-  const item = cartItems.find(cartItem => cartItem._id === _id);
-  if(!item){
-    return null
+  const item = cartItems.find((cartItem) => cartItem._id === _id);
+  if (!item) {
+    return null;
   }
+  const productPriceWithDiscount = item.discount ? Number(item.price) * ((100 - Number(item.discount)) / 100) : Number(item.price);
+
   const handleIncrement = () => {
     dispatch(updateQuantity({ productId: item._id, quantity: quantity + 1 }));
   };
@@ -28,7 +30,7 @@ const CartItem = (props: CartItemProps) => {
   const handleDecrement = () => {
     if (quantity > 1) {
       dispatch(updateQuantity({ productId: item._id, quantity: quantity - 1 }));
-    }else {
+    } else {
       dispatch(removeFromCart(item._id));
     }
   };
@@ -38,8 +40,8 @@ const CartItem = (props: CartItemProps) => {
       dispatch(updateQuantity({ productId: item._id, quantity: value }));
     }
   };
-  
-  return (  
+
+  return (
     <div className="CartItem">
       <div className="CartItem__image">
         <Image src="/assets/parket_image.jpg" alt={item.name} width={80} height={80} />
@@ -49,30 +51,30 @@ const CartItem = (props: CartItemProps) => {
         <p className="CartItem_description">{description}</p>
         <div className="CartItem__info_bottom">
           <div className="CartItem__quantity">
-            <button
-              onClick={handleDecrement}
-              >
-                -
-              </button>
+            <button onClick={handleDecrement}>-</button>
             <div>
-              <input
-              type="number"
-              value={quantity}
-              onChange={handleInputChange}
-              min="0"
-              className="CartItem__input"
-            />
+              <input type="number" value={quantity} onChange={handleInputChange} min="0" className="CartItem__input" />
             </div>
-            <button
-            onClick={handleIncrement}
-            >
-              +
-            </button>
+            <button onClick={handleIncrement}>+</button>
           </div>
           <div>
-            <span>
-            ₪ {item.price}
-            </span>
+            {item.discount ? (
+              <div className="price__container">
+                <span className="price__discounted">
+                  <span className="prefix">₪</span>
+                  {productPriceWithDiscount.toFixed()}
+                </span>
+                <span className="price__original">
+                  <span className="prefix">₪</span>
+                  {item.price}
+                </span>
+              </div>
+            ) : (
+              <span>
+                <span className="prefix">₪</span>
+                {item.price}
+              </span>
+            )}
           </div>
         </div>
       </div>

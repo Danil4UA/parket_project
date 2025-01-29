@@ -25,7 +25,6 @@ const ProductCard = ({ productId, productName, productPrice, discount = 0, categ
     "/assets/parket_example_2.jpg",
     "/assets/parket_example_3.jpg"
   ];
-
   // Генерируем случайное изображение один раз
   const randomImage = useMemo(() => {
     return images[Math.floor(Math.random() * images.length)];
