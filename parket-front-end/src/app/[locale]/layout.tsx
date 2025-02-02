@@ -16,6 +16,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
     return notFound();
   }
   const messages = await getMessages();
+
   return (
     <html lang={locale} dir={locale === "he" ? "rtl" : "ltr"}>
       <body>

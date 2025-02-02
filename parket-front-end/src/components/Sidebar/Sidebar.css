@@ -5,12 +5,14 @@
   bottom: 0;
   left: 0;
   z-index: 2000;
-  transition: all 0.3s ease;
+  transition: width 0.5s ease;
   position: absolute;
   height: calc(100vh - var(--navbar-height));
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
 }
-
+.Sidebar-rtl {
+  right: 0;
+}
 .Sidebar_wrapper {
   display: flex;
   height: 100%;
@@ -49,7 +51,7 @@
   width: 25px;
   height: 25px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 .Sidebar_footer_contact span:hover {
   transform: translateY(-2px);
@@ -68,7 +70,6 @@
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
-  transform: translateX(-100%);
 }
 
 .items {
@@ -99,7 +100,7 @@
 
 @media (max-width: 768px) {
   .Sidebar {
-    width: 280px;
+    max-width: 280px;
   }
 
   .SideBar__Item {

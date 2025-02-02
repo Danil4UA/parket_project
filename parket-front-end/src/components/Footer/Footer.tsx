@@ -1,12 +1,28 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import "./Footer.css";
+import Modal from "@/shared/ui/Modal/Modal";
 
 const Footer = () => {
+  const [isShownModal, setIsShownModal] = useState(false);
+  const [modalContent, setModalContent] = useState("");
+
   const currentYear = new Date().getFullYear();
   const t = useTranslations("Footer");
+
+  const handleLinkClick = (contentKey: string) => {
+    setModalContent(t(contentKey));
+    setIsShownModal(true);
+  };
+
   return (
     <footer className="footer">
+      {isShownModal && (
+        <Modal onClose={() => setIsShownModal(false)}>
+          <div>{modalContent}</div>
+        </Modal>
+      )}
       <div className="footer_container">
         <div className="footer-content">
           <div className="footer-section">
@@ -29,7 +45,15 @@ const Footer = () => {
             <ul className="quick-links">
               {["about_us", "services", "contact", "privacy_policy"].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase().replace("_", "-")}`}>{t(item)}</a>
+                  <a
+                    href={`#${item.toLowerCase().replace("_", "-")}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleLinkClick(`${item}_content`);
+                    }}
+                  >
+                    {t(item)}
+                  </a>
                 </li>
               ))}
             </ul>

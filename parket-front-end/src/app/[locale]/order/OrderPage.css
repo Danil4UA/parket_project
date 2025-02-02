@@ -230,6 +230,20 @@
   font-weight: 600;
   font-size: 16px;
 }
+.error {
+  border-color: red !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.complete_order:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 @media screen and (max-width: 980px) {
   .Order__wrapper {
     flex-direction: column;

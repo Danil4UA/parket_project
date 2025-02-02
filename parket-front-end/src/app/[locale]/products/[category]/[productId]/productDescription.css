@@ -170,47 +170,50 @@
   line-height: 1.6;
   color: #4a4a4a;
 }
-
-.product__price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 1rem 0;
+.product-price {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
-.price__container {
+.product-price--discounted {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  gap: 12px;
 }
 
-.price__discounted {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #d9534f; /* Красный для скидочной цены */
+.product-price__amount {
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
 }
 
-.price__original {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #6c757d; /* Серый для оригинальной цены */
+.product-price__amount--discounted {
+  font-size: 20px;
+  color: #e41e31;
+}
+
+.product-price__amount--original {
   text-decoration: line-through;
-  margin-top: 0.2rem;
+  color: #666;
+  font-size: 16px;
+  font-weight: normal;
 }
 
-.prefix {
-  font-size: 0.9rem;
-  vertical-align: top;
+.product-price__currency {
+  font-size: 0.85em;
+  margin-right: 2px;
 }
 
-.product__price span {
-  display: inline-block;
+/* Optional hover effects */
+.product-price:hover .product-price__amount--discounted {
+  color: #c41929;
 }
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
   .product-wrapper {
-    padding: 1.5rem;
     gap: 2rem;
   }
 }
@@ -219,6 +222,9 @@
   .product-container {
     flex-direction: column;
     padding: 1rem;
+  }
+  .gallery-container {
+    padding: 0;
   }
 
   .product__left,

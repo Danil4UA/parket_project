@@ -14,6 +14,8 @@
 
 .CategoryCard__image {
   width: 100%;
+  max-width: 300px;
+
   height: auto;
   object-fit: cover;
   transition: transform 0.5s ease;
@@ -28,8 +30,9 @@
   padding: 15px;
   display: flex;
   gap: 10px;
+  height: 170px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .CategoryCard__title {
@@ -43,9 +46,4 @@
   color: #aaa;
   text-decoration: none;
   transition: color 0.3s ease;
-}
-@media screen and (max-width: 750px) {
-  .CategoryCard {
-    max-width: 100%;
-  }
 }

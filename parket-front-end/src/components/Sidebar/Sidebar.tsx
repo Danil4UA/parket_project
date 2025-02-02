@@ -4,9 +4,10 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useEffect, useMemo } from "react";
 import { SidebarItemsList } from "./model/items";
 import SidebarItem from "./SideBarItem/SideBarItem";
-import InstagramIcon from "@/app/assets/instagram.svg"
-import FacebookIcon from "@/app/assets/facebook.svg"
-import TelegramIcon from "@/app/assets/telegram.svg"
+import InstagramIcon from "@/app/assets/instagram.svg";
+import FacebookIcon from "@/app/assets/facebook.svg";
+import TelegramIcon from "@/app/assets/telegram.svg";
+import { usePathname } from "next/navigation";
 
 interface SidebarProps {
   collapsed: boolean;
@@ -14,6 +15,9 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ collapsed, onClose }: SidebarProps) => {
+  const pathname = usePathname();
+  const lng = pathname.split("/")[1];
+
   useEffect(() => {
     if (!collapsed) {
       document.documentElement.style.overflow = "hidden";
@@ -44,28 +48,32 @@ export const Sidebar = ({ collapsed, onClose }: SidebarProps) => {
   const itemsList = useMemo(() => {
     return SidebarItemsList.map((item) => <SidebarItem item={item} collapsed={collapsed} onClose={onClose} key={item.path} />);
   }, [collapsed, onClose]);
-
+  const isRTL = lng === "he";
   return (
     <>
       {/* Sidebar */}
-      <div className={classNames("Sidebar", { collapsed }, [])}>
-        {!collapsed && 
-        <div className="Sidebar_wrapper">
-          <div className="items">{itemsList}</div>
-          <div className="Sidebar_footer">
-            <div className="Sidebar_footer_language">
-
-            </div>
-            <div className="Sidebar_footer_contact">
+      <div className={classNames("Sidebar", { ["collapsed"]: collapsed, "Sidebar-rtl": isRTL }, [])}>
+        {!collapsed && (
+          <div className="Sidebar_wrapper">
+            <div className="items">{itemsList}</div>
+            <div className="Sidebar_footer">
+              <div className="Sidebar_footer_language"></div>
+              <div className="Sidebar_footer_contact">
                 <div>
-                  <span><InstagramIcon /></span>
-                  <span><FacebookIcon /></span>
-                  <span><TelegramIcon /></span>
+                  <span>
+                    <InstagramIcon />
+                  </span>
+                  <span>
+                    <FacebookIcon />
+                  </span>
+                  <span>
+                    <TelegramIcon />
+                  </span>
                 </div>
+              </div>
             </div>
           </div>
-        </div>
-      }
+        )}
       </div>
       {/* Overlay */}
       <div className={classNames("overlay", { overlayActive: !collapsed })} onClick={onClose} />

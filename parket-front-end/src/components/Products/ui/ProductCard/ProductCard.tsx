@@ -4,7 +4,6 @@ import { Link } from "@/i18n/routing";
 import "./ProductCard.css";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useMemo } from "react";
 
 interface ProductCardProps {
   productId: string;
@@ -13,31 +12,30 @@ interface ProductCardProps {
   productDescription?: string;
   discount?: number;
   category: string;
+  images: string[];
+  stock: number;
 }
 
-const ProductCard = ({ productId, productName, productPrice, discount = 0, category }: ProductCardProps) => {
+const ProductCard = ({ productId, productName, productPrice, discount = 0, category, images, stock }: ProductCardProps) => {
   const t = useTranslations("Product");
   const productPriceWithDiscount = discount ? Number(productPrice) * ((100 - discount) / 100) : Number(productPrice);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const images = [
-    "/assets/parket_image.jpg",
-    "/assets/parket_example_1.jpg",
-    "/assets/parket_example_2.jpg",
-    "/assets/parket_example_3.jpg"
-  ];
-  // Генерируем случайное изображение один раз
-  const randomImage = useMemo(() => {
-    return images[Math.floor(Math.random() * images.length)];
-  }, [images]);
 
   return (
-    <div className={classNames("ProductCard", {}, [])}>
-      <Link href={`/products/${category}/${productId}`} className="card__media">
+    <div className={classNames("ProductCard", { "out-of-stock": stock === 0 }, [])}>
+      <Link
+        href={stock === 0 ? "#" : `/products/${category}/${productId}`}
+        className="card__media"
+        onClick={(e) => stock === 0 && e.preventDefault()}
+      >
         <div className="card__image">
-          <Image src={randomImage} width={300} height={300} alt={productName} />
+          <Image src={images[0]} width={300} height={300} alt={productName} />
+          {stock === 0 && (
+            <div className="card__out_of_stock_overlay">
+              <span className="out_of_stock_text">{t("OutOfStock")}</span>
+            </div>
+          )}
         </div>
         {discount > 0 && <div className="card__sale_badge">-{discount}%</div>}
-
         <div className="card__information">
           <div>{productName}</div>
           <div className="card__information_price">
@@ -59,7 +57,7 @@ const ProductCard = ({ productId, productName, productPrice, discount = 0, categ
               </span>
             )}
           </div>
-          <div className="card__information_button">{t("GetMoreDetails")}</div>
+          <div className="card__information_button">{stock === 0 ? t("NotifyWhenAvailable") : t("GetMoreDetails")}</div>
         </div>
       </Link>
     </div>

@@ -10,6 +10,8 @@ import { useState } from "react";
 import productsServices from "@/services/prodcuts.services";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import ProductSort from "../ProductSort/ProductSort";
+import { usePathname } from "next/navigation";
+
 export interface Product {
   _id: string;
   name: string;
@@ -31,11 +33,13 @@ interface ProductsListProps {
 const ProductsList = ({ category }: ProductsListProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+  const pathname = usePathname();
+  const language = pathname.split("/")[1];
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const products = await productsServices.getProductsByCategory(category);
+        const products = await productsServices.getProductsByCategory(category, language);
         dispatch(setProducts(products || []));
       } catch (error) {
         console.log(error);
@@ -44,7 +48,7 @@ const ProductsList = ({ category }: ProductsListProps) => {
       }
     };
     fetchProducts();
-  }, [category, dispatch]);
+  }, [category, dispatch, language]);
 
   const filters = useSelector((state: RootState) => state.products.filters);
   const productsList = useSelector((state: RootState) => state.products.filteredProducts);
@@ -58,18 +62,24 @@ const ProductsList = ({ category }: ProductsListProps) => {
         <ProductSort />
       </div>
       <div className="products__list">
-        {isLoading
-          ? Array.from({ length: 12 }).map((_, index) => <ProductCardSkeleton key={index} />)
-          : productsList.map((product) => (
-              <ProductCard
-                key={product._id}
-                productId={product._id}
-                productName={product.name}
-                productPrice={product.price}
-                discount={product.discount}
-                category={category}
-              />
-            ))}
+        {isLoading ? (
+          Array.from({ length: 12 }).map((_, index) => <ProductCardSkeleton key={index} />)
+        ) : productsList.length > 0 ? (
+          productsList.map((product) => (
+            <ProductCard
+              key={product._id}
+              productId={product._id}
+              productName={product.name}
+              productPrice={product.price}
+              discount={product.discount}
+              images={product.images}
+              stock={product.stock}
+              category={category}
+            />
+          ))
+        ) : (
+          <div className="products__list_card_empty">No items avaialble</div>
+        )}
       </div>
     </div>
   );

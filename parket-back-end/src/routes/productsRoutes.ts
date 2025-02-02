@@ -6,6 +6,4 @@ router.get("/all", productsControllers.getAllProducts);
 router.get("/:id", productsControllers.getProductById);
 router.get("/", productsControllers.getProductByCategory);
 
-// router.post('/create', productsControllers.createProduct);
-
 export default router;

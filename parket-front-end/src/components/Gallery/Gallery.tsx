@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 import "./Gallery.css";
+import Image from "next/image";
 
 interface GalleryProps {
   images: string[];
@@ -14,46 +15,43 @@ const Gallery = ({ images }: GalleryProps) => {
 
     const container = thumbnailsRef.current;
     const startX = e.touches[0].clientX;
+    let lastX = startX;
 
     const handleTouchMove = (moveEvent: TouchEvent) => {
       const moveX = moveEvent.touches[0].clientX;
-      const deltaX = startX - moveX;
+      const deltaX = lastX - moveX;
+      lastX = moveX;
 
-      // Scroll container by swipe distance
       container.scrollLeft += deltaX;
     };
 
     const handleTouchEnd = () => {
       // Clean up event listeners
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
 
     // Attach touch move and end listeners
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
   };
 
   return (
     <div className="Gallery__wrapper">
       {/* Main image */}
       <div className="Gallery__main-image">
-        <img src={mainImage} alt="Main" />
+        <Image src={mainImage} width={500} height={500} alt="Main" className="Gallery__main-image-content" />
       </div>
 
-      <div
-        className="Gallery__thumbnails"
-        ref={thumbnailsRef}
-        onTouchStart={handleSwipe}
-      >
+      <div className="Gallery__thumbnails" ref={thumbnailsRef} onTouchStart={handleSwipe}>
         {images.map((image, index) => (
-          <img
+          <Image
             key={index}
+            width={80}
+            height={80}
             src={image}
             alt={`Thumbnail ${index + 1}`}
-            className={`Gallery__thumbnail ${
-              mainImage === image ? 'Gallery__thumbnail--active' : ''
-            }`}
+            className={`Gallery__thumbnail ${mainImage === image ? "Gallery__thumbnail--active" : ""}`}
             onClick={() => setMainImage(image)}
           />
         ))}

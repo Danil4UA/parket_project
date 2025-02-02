@@ -1,23 +1,47 @@
 import { Request, Response } from "express";
 import Product from "../model/Product";
+import { isValidLanguage } from "../utils";
 
 const productsControllers = {
   getAllProducts: async (req: Request, res: Response) => {
     try {
+      const language = req.query.language?.toString() || "en";
       const products = await Product.find();
-      res.status(200).json(products);
+
+      const localizedProducts = products.map((product) => {
+        const localizedName = isValidLanguage(language) ? product.name[language] : product.name.en;
+
+        const localizedDescription = isValidLanguage(language) ? product.description[language] : product.description.en;
+
+        return {
+          ...product.toObject(),
+          name: localizedName,
+          description: localizedDescription
+        };
+      });
+
+      res.status(200).json(localizedProducts);
     } catch (error) {
       res.status(500).json({ message: "Error fetching products", error });
     }
   },
   getProductById: async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const language = req.query.language?.toString() || "en";
     try {
-      const { id } = req.params;
       const product = await Product.findById(id);
-      if (!product) {
-        res.status(404).json({ message: "Product not found" });
+      if (product) {
+        const localizedName = isValidLanguage(language) ? product.name[language] : product.name.en;
+        const localizedDescription = isValidLanguage(language) ? product.description[language] : product.description.en;
+        const localizedProduct = {
+          ...product.toObject(),
+          name: localizedName,
+          description: localizedDescription
+        };
+        res.status(200).json(localizedProduct);
+      } else {
+        res.status(404).json({ success: false, message: "failed fetch the product" });
       }
-      res.status(200).json(product);
     } catch (error) {
       res.status(500).json({ message: "Error fetching product", error });
     }
@@ -25,6 +49,7 @@ const productsControllers = {
 
   getProductByCategory: async (req: Request, res: Response) => {
     const { category } = req.query;
+    const language = req.query.language?.toString() || "en";
     try {
       let query = {};
       if (category === "all") {
@@ -33,65 +58,24 @@ const productsControllers = {
       } else if (category) {
         query = { category: { $regex: new RegExp(category as string, "i") } };
       }
+
       const products = await Product.find(query);
-      res.json(products);
+      const localizedProducts = products.map((product) => {
+        const localizedName = isValidLanguage(language) ? product.name[language] : product.name.en;
+
+        const localizedDescription = isValidLanguage(language) ? product.description[language] : product.description.en;
+
+        return {
+          ...product.toObject(),
+          name: localizedName,
+          description: localizedDescription
+        };
+      });
+
+      res.json(localizedProducts);
     } catch (error) {
       console.error("Error fetching products:", error);
       res.status(500).json({ error: "Internal server error" });
-    }
-  },
-
-  createProduct: async (req: Request, res: Response) => {
-    try {
-      const { name, description, price, images, category, stock, discount, isAvailable, color, type, material, countryOfOrigin } = req.body;
-
-      const newProduct = new Product({
-        name,
-        description,
-        price,
-        images,
-        category,
-        stock,
-        discount,
-        isAvailable,
-        color,
-        type,
-        material,
-        countryOfOrigin
-      });
-
-      const savedProduct = await newProduct.save();
-      res.status(201).json(savedProduct);
-    } catch (error) {
-      res.status(500).json({ message: "Error creating product", error });
-    }
-  },
-
-  editProductById: async (req: Request, res: Response) => {
-    try {
-      const { id } = req.params;
-      const updatedProduct = await Product.findByIdAndUpdate(id, req.body, {
-        new: true
-      });
-      if (!updatedProduct) {
-        return res.status(404).json({ message: "Product not found" });
-      }
-      res.status(200).json(updatedProduct);
-    } catch (error) {
-      res.status(500).json({ message: "Error updating product", error });
-    }
-  },
-
-  deleteProductById: async (req: Request, res: Response) => {
-    try {
-      const { id } = req.params;
-      const deletedProduct = await Product.findByIdAndDelete(id);
-      if (!deletedProduct) {
-        return res.status(404).json({ message: "Product not found" });
-      }
-      res.status(200).json({ message: "Product deleted successfully" });
-    } catch (error) {
-      res.status(500).json({ message: "Error deleting product", error });
     }
   }
 };

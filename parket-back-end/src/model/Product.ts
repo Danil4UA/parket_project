@@ -1,9 +1,14 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
+export interface LocalizedString {
+  en: string;
+  ru: string;
+  he: string;
+}
 export interface IProduct extends Document {
   productId: string;
-  name: string;
-  description: string;
+  name: LocalizedString;
+  description: LocalizedString;
   price: string;
   images: string[];
   category: string;
@@ -16,10 +21,22 @@ export interface IProduct extends Document {
   countryOfOrigin: string;
 }
 
+const LocalizedStringSchema = {
+  en: { type: String, required: true },
+  ru: { type: String, required: true },
+  he: { type: String, required: true }
+};
+
 const ProductSchema: Schema = new Schema(
   {
-    name: { type: String, required: true },
-    description: { type: String, required: true },
+    name: {
+      type: LocalizedStringSchema,
+      required: true
+    },
+    description: {
+      type: LocalizedStringSchema,
+      required: true
+    },
     price: { type: String, required: true },
     images: { type: [String], required: true },
     category: { type: String, required: true },
@@ -29,11 +46,11 @@ const ProductSchema: Schema = new Schema(
     color: { type: String, required: true },
     type: { type: String, required: true },
     material: { type: String, required: true },
-    countryOfOrigin: { type: String, required: true },
+    countryOfOrigin: { type: String, required: true }
   },
   { timestamps: true }
 );
 
-const Product = mongoose.model<IProduct>('Product', ProductSchema);
+const Product = mongoose.model<IProduct>("Product", ProductSchema);
 
 export default Product;

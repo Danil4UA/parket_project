@@ -8,13 +8,8 @@ interface CartItemProps {
   item: CartItemType;
 }
 const CartItem = (props: CartItemProps) => {
-  const {
-    name,
-    description,
-    quantity,
-    // images,
-    _id
-  } = props.item;
+  const { name, description, quantity, images, _id } = props.item;
+  console.log("images", images);
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const item = cartItems.find((cartItem) => cartItem._id === _id);
@@ -44,7 +39,7 @@ const CartItem = (props: CartItemProps) => {
   return (
     <div className="CartItem">
       <div className="CartItem__image">
-        <Image src="/assets/parket_image.jpg" alt={item.name} width={80} height={80} />
+        <Image src={images[0]} alt={item.name} width={80} height={80} />
       </div>
       <div className="CartItem__info">
         <p className="CartItem_title">{name}</p>
@@ -59,19 +54,19 @@ const CartItem = (props: CartItemProps) => {
           </div>
           <div>
             {item.discount ? (
-              <div className="price__container">
-                <span className="price__discounted">
-                  <span className="prefix">₪</span>
+              <div className="product-price__container">
+                <span className="product-price__discount">
+                  <span className="product-price__currency">₪</span>
                   {productPriceWithDiscount.toFixed()}
                 </span>
-                <span className="price__original">
-                  <span className="prefix">₪</span>
+                <span className="product-price__old">
+                  <span className="product-price__currency">₪</span>
                   {item.price}
                 </span>
               </div>
             ) : (
-              <span>
-                <span className="prefix">₪</span>
+              <span className="product-price__current">
+                <span className="product-price__currency">₪</span>
                 {item.price}
               </span>
             )}

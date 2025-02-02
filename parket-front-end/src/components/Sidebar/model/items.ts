@@ -8,21 +8,21 @@ export const SidebarItemsList: SidebarItemType[] = [
   {
     path: "/",
     Icon: "",
-    text: "Home"
+    text: "home"
   },
   {
     path: "/products/flooring",
     Icon: "",
-    text: "Flooring"
+    text: "flooring"
   },
   {
     path: "/products/sales",
     Icon: "",
-    text: "Sales"
+    text: "sales"
   },
   {
     path: "/products/all",
     Icon: "",
-    text: "Catalog"
+    text: "catalog"
   }
 ];
